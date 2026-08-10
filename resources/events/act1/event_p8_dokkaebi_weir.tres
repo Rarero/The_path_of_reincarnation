@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_dokkaebi_weir"
+display_name = "도깨비보 지름길"
+polarity = 0
+score = 10
+trigger = 0
+room_flavor = 1
+theme_tags = Array[StringName]([&"roof", &"alley"])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = false
+m2_priority = false
+act = 1
+implemented = false
+params = {}
+designer_note = "P8. 자동 개통 후 선택 진입. 발동은 자동으로 잡고 진입 선택은 방 안 분기로 둔다. 지름길 규격은 M1 이동 규격 확정 후. EVENTS 4장 P8"

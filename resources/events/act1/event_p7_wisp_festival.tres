@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_wisp_festival"
+display_name = "도깨비불 축제"
+polarity = 0
+score = 10
+trigger = 0
+room_flavor = 1
+theme_tags = Array[StringName]([])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = false
+m2_priority = true
+act = 1
+implemented = true
+params = { "coin_reward": 12 }
+designer_note = "P7. 즉시 효과 결과. 지금은 소량 엽전만 준다. 방 도깨비불 상시 점등과 발판 난이도 하락은 이벤트방 슬롯 전환 뒤 G10에서 붙인다. EVENTS 4장 P7"

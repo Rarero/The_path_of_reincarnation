@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_bangmangi"
+display_name = "방망이 한 방"
+polarity = 0
+score = 30
+trigger = 1
+room_flavor = 2
+theme_tags = Array[StringName]([])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = true
+m2_priority = false
+act = 1
+implemented = false
+params = { "reward_choices": 3 }
+designer_note = "P2. 도깨비방망이 설화 1. 3택 보상 1회. 생산 도구로 연출하고 살상 무기로 쓰지 않는다. 큰 값(30). EVENTS 4장 P2"

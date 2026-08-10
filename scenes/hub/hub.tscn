@@ -1,0 +1,302 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scenes/hub/hub.gd" id="1_hub"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/levels/block.tscn" id="3_block"]
+[ext_resource type="SpriteFrames" path="res://assets/sprites/npc/saja_v3_frames.tres" id="4_frames"]
+[ext_resource type="Script" path="res://scripts/npc/npc_actor.gd" id="5_npc"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bg/hub_bg_full.png" id="6_hubfull"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bg/hub_pillar.png" id="8_pillar"]
+[ext_resource type="PackedScene" path="res://scenes/ui/dialogue_box.tscn" id="9_dialogue"]
+[ext_resource type="PackedScene" path="res://scenes/ui/event_result_popup.tscn" id="10_popup"]
+[ext_resource type="SpriteFrames" path="res://assets/sprites/npc/clerk_frames.tres" id="11_clerk"]
+[ext_resource type="SpriteFrames" path="res://assets/sprites/ui/mark_alert_frames.tres" id="14_mark"]
+
+[node name="Hub" type="Node2D"]
+script = ExtResource("1_hub")
+
+[node name="Bg" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Rect" type="ColorRect" parent="Bg"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.16, 0.14, 0.18, 1)
+
+[node name="Backdrop" type="Sprite2D" parent="."]
+texture_filter = 1
+z_index = -100
+texture = ExtResource("6_hubfull")
+centered = false
+position = Vector2(0, -13)
+
+[node name="Pillar1" type="Sprite2D" parent="."]
+texture_filter = 1
+z_index = 30
+texture = ExtResource("8_pillar")
+centered = false
+position = Vector2(454, -13)
+
+[node name="Pillar2" type="Sprite2D" parent="."]
+texture_filter = 1
+z_index = 30
+texture = ExtResource("8_pillar")
+centered = false
+position = Vector2(934, -13)
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="Floor" parent="Terrain" instance=ExtResource("3_block")]
+position = Vector2(0, 160)
+size = Vector2i(1440, 16)
+
+[node name="WallLeft" parent="Terrain" instance=ExtResource("3_block")]
+position = Vector2(-16, 0)
+size = Vector2i(16, 176)
+
+[node name="WallRight" parent="Terrain" instance=ExtResource("3_block")]
+position = Vector2(1440, 0)
+size = Vector2i(16, 176)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(40, 160)
+z_index = 20
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(40, 160)
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="NpcChasa" type="Node2D" parent="Interactables"]
+position = Vector2(90, 160)
+
+[node name="Anim" type="AnimatedSprite2D" parent="Interactables/NpcChasa"]
+sprite_frames = ExtResource("4_frames")
+animation = &"work"
+autoplay = "work"
+offset = Vector2(0, -48)
+scale = Vector2(0.45, 0.45)
+script = ExtResource("5_npc")
+
+[node name="Tag" type="Label" parent="Interactables/NpcChasa"]
+offset_left = -48.0
+offset_top = -54.0
+offset_right = 48.0
+offset_bottom = -42.0
+horizontal_alignment = 1
+text = "차사 아무개"
+
+[node name="Mark" type="AnimatedSprite2D" parent="Interactables/NpcChasa"]
+texture_filter = 1
+z_index = 12
+position = Vector2(0, -62.0)
+sprite_frames = ExtResource("14_mark")
+animation = &"bob"
+autoplay = "bob"
+
+[node name="NpcSapsal" type="Node2D" parent="Interactables"]
+position = Vector2(240, 160)
+
+[node name="Bar" type="ColorRect" parent="Interactables/NpcSapsal"]
+offset_left = -8.0
+offset_top = -40.0
+offset_right = 8.0
+color = Color(0.6, 0.5, 0.4, 1)
+
+[node name="Tag" type="Label" parent="Interactables/NpcSapsal"]
+offset_left = -48.0
+offset_top = -54.0
+offset_right = 48.0
+offset_bottom = -42.0
+horizontal_alignment = 1
+text = "삽살개"
+
+[node name="NpcBlacksmith" type="Node2D" parent="Interactables"]
+position = Vector2(290, 160)
+
+[node name="Bar" type="ColorRect" parent="Interactables/NpcBlacksmith"]
+offset_left = -8.0
+offset_top = -40.0
+offset_right = 8.0
+color = Color(0.45, 0.35, 0.55, 1)
+
+[node name="Tag" type="Label" parent="Interactables/NpcBlacksmith"]
+offset_left = -48.0
+offset_top = -54.0
+offset_right = 48.0
+offset_bottom = -42.0
+horizontal_alignment = 1
+text = "대장장이"
+
+[node name="StationWeaponSwap" type="Node2D" parent="Interactables"]
+position = Vector2(340, 160)
+
+[node name="Bar" type="ColorRect" parent="Interactables/StationWeaponSwap"]
+offset_left = -8.0
+offset_top = -40.0
+offset_right = 8.0
+color = Color(0.4, 0.5, 0.6, 1)
+
+[node name="Tag" type="Label" parent="Interactables/StationWeaponSwap"]
+offset_left = -48.0
+offset_top = -54.0
+offset_right = 48.0
+offset_bottom = -42.0
+horizontal_alignment = 1
+text = "무기 교체대"
+
+[node name="StationBoonGacha" type="Node2D" parent="Interactables"]
+position = Vector2(390, 160)
+
+[node name="Bar" type="ColorRect" parent="Interactables/StationBoonGacha"]
+offset_left = -8.0
+offset_top = -40.0
+offset_right = 8.0
+color = Color(0.4, 0.6, 0.55, 1)
+
+[node name="Tag" type="Label" parent="Interactables/StationBoonGacha"]
+offset_left = -48.0
+offset_top = -54.0
+offset_right = 48.0
+offset_bottom = -42.0
+horizontal_alignment = 1
+text = "신당"
+
+[node name="NpcClerk" type="Node2D" parent="Interactables"]
+position = Vector2(1197, 160)
+
+[node name="Anim" type="AnimatedSprite2D" parent="Interactables/NpcClerk"]
+texture_filter = 1
+position = Vector2(0, -23)
+sprite_frames = ExtResource("11_clerk")
+animation = &"work"
+autoplay = "work"
+script = ExtResource("5_npc")
+
+[node name="Tag" type="Label" parent="Interactables/NpcClerk"]
+offset_left = -48.0
+offset_top = -62.0
+offset_right = 48.0
+offset_bottom = -50.0
+horizontal_alignment = 1
+text = "접수 관원"
+
+[node name="Mark" type="AnimatedSprite2D" parent="Interactables/NpcClerk"]
+texture_filter = 1
+z_index = 12
+position = Vector2(0, -78.0)
+sprite_frames = ExtResource("14_mark")
+animation = &"bob"
+autoplay = "bob"
+
+[node name="GateAct1" type="Node2D" parent="Interactables"]
+position = Vector2(1349, 160)
+
+[node name="Bar" type="ColorRect" parent="Interactables/GateAct1"]
+offset_left = -10.0
+offset_top = -48.0
+offset_right = 10.0
+color = Color(0.85, 0.6, 0.25, 1)
+
+[node name="Tag" type="Label" parent="Interactables/GateAct1"]
+offset_left = -48.0
+offset_top = -62.0
+offset_right = 48.0
+offset_bottom = -50.0
+horizontal_alignment = 1
+text = "1막 상행문"
+
+[node name="Crowd" type="Node2D" parent="."]
+
+[node name="Wisp0" type="Node2D" parent="Crowd"]
+position = Vector2(120, 158)
+
+[node name="Rect" type="ColorRect" parent="Crowd/Wisp0"]
+offset_left = -3.0
+offset_top = -22.0
+offset_right = 3.0
+color = Color(0.5, 0.55, 0.62, 0.5)
+
+[node name="Wisp1" type="Node2D" parent="Crowd"]
+position = Vector2(165, 158)
+
+[node name="Rect" type="ColorRect" parent="Crowd/Wisp1"]
+offset_left = -3.0
+offset_top = -22.0
+offset_right = 3.0
+color = Color(0.5, 0.55, 0.62, 0.5)
+
+[node name="Wisp2" type="Node2D" parent="Crowd"]
+position = Vector2(210, 158)
+
+[node name="Rect" type="ColorRect" parent="Crowd/Wisp2"]
+offset_left = -3.0
+offset_top = -22.0
+offset_right = 3.0
+color = Color(0.5, 0.55, 0.62, 0.5)
+
+[node name="Wisp3" type="Node2D" parent="Crowd"]
+position = Vector2(255, 158)
+
+[node name="Rect" type="ColorRect" parent="Crowd/Wisp3"]
+offset_left = -3.0
+offset_top = -22.0
+offset_right = 3.0
+color = Color(0.5, 0.55, 0.62, 0.5)
+
+[node name="Wisp4" type="Node2D" parent="Crowd"]
+position = Vector2(300, 158)
+
+[node name="Rect" type="ColorRect" parent="Crowd/Wisp4"]
+offset_left = -3.0
+offset_top = -22.0
+offset_right = 3.0
+color = Color(0.5, 0.55, 0.62, 0.5)
+
+[node name="Wisp5" type="Node2D" parent="Crowd"]
+position = Vector2(360, 158)
+
+[node name="Rect" type="ColorRect" parent="Crowd/Wisp5"]
+offset_left = -3.0
+offset_top = -22.0
+offset_right = 3.0
+color = Color(0.5, 0.55, 0.62, 0.5)
+
+[node name="PromptLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_right = 96.0
+offset_bottom = 12.0
+horizontal_alignment = 1
+
+[node name="Ui" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="MessageLabel" type="Label" parent="Ui"]
+unique_name_in_owner = true
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 312.0
+offset_bottom = 22.0
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DialogueBox" parent="Ui" instance=ExtResource("9_dialogue")]
+unique_name_in_owner = true
+
+[node name="RewardPopup" parent="Ui" instance=ExtResource("10_popup")]
+unique_name_in_owner = true
+
+[node name="Hint" type="Label" parent="Ui"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -42.0
+offset_right = 214.0
+offset_bottom = -4.0
+grow_vertical = 0
+vertical_alignment = 2
+text = "이동 A/D   점프 Space   대시 Shift
+상호작용 W   대화 넘기기 W 또는 Enter"

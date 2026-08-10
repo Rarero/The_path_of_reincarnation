@@ -1,0 +1,125 @@
+[gd_resource type="Resource" script_class="SynergyTable" load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/synergy_table.gd" id="1_table"]
+[ext_resource type="Script" path="res://scripts/data/pantheon_synergy.gd" id="2_entry"]
+[ext_resource type="Script" path="res://scripts/data/boon_effect.gd" id="3_eff"]
+
+[sub_resource type="Resource" id="sansin_step2"]
+script = ExtResource("3_eff")
+hook = 0
+target_key = &"max_health"
+base_value = 10.0
+is_multiplier = false
+rarity_scales = false
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="sansin_step3_a"]
+script = ExtResource("3_eff")
+hook = 0
+target_key = &"stagger_resist"
+base_value = 0.15
+is_multiplier = true
+rarity_scales = false
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="sansin_step3_b"]
+script = ExtResource("3_eff")
+hook = 0
+target_key = &"damage_taken"
+base_value = -0.08
+is_multiplier = true
+rarity_scales = false
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="sansin_step4"]
+script = ExtResource("3_eff")
+hook = 0
+target_key = &"melee_damage"
+base_value = 0.2
+is_multiplier = true
+rarity_scales = false
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="sansin_entry"]
+script = ExtResource("2_entry")
+pantheon = 0
+display_name = "산신의 기운"
+step2 = Array[BoonEffect]([SubResource("sansin_step2")])
+step3 = Array[BoonEffect]([SubResource("sansin_step3_a"), SubResource("sansin_step3_b")])
+step4 = Array[BoonEffect]([SubResource("sansin_step4")])
+description = "2단계 최대 체력 상승, 3단계 경직 저항과 받는 피해 감소, 4단계 근접 피해 상승 (초안, M2 밸런싱에서 확정)"
+
+[sub_resource type="Resource" id="jowang_step2"]
+script = ExtResource("3_eff")
+hook = 0
+target_key = &"burn_duration"
+base_value = 0.2
+is_multiplier = true
+rarity_scales = false
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="jowang_step3"]
+script = ExtResource("3_eff")
+hook = 0
+target_key = &"burn_stack_cap"
+base_value = 2.0
+is_multiplier = false
+rarity_scales = false
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="jowang_step4"]
+script = ExtResource("3_eff")
+hook = 6
+target_key = &"burn_spread_on_kill"
+base_value = 2.0
+is_multiplier = false
+rarity_scales = false
+chance = 1.0
+duration_sec = 3.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &"target_burning"
+condition_value = 0.0
+
+[sub_resource type="Resource" id="jowang_entry"]
+script = ExtResource("2_entry")
+pantheon = 1
+display_name = "조왕의 불씨"
+step2 = Array[BoonEffect]([SubResource("jowang_step2")])
+step3 = Array[BoonEffect]([SubResource("jowang_step3")])
+step4 = Array[BoonEffect]([SubResource("jowang_step4")])
+description = "2단계 화상 지속 증가, 3단계 화상 스택 상한 +2, 4단계 화상으로 죽은 적이 주변에 화상을 옮긴다 (초안, M2 밸런싱에서 확정)"
+
+[resource]
+script = ExtResource("1_table")
+entries = Array[PantheonSynergy]([SubResource("sansin_entry"), SubResource("jowang_entry")])

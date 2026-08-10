@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_night_market_boom"
+display_name = "야시장 대목"
+polarity = 0
+score = 20
+trigger = 0
+room_flavor = 0
+theme_tags = Array[StringName]([&"street"])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = false
+m2_priority = true
+act = 1
+implemented = false
+params = { "stall_density_mult": 2.0, "drop_bonus_mult": 2.5, "aggro_on_break": true, "relic_rule_priority": true }
+designer_note = "P3. 좌판 밀도 2배와 드랍 상향. 파괴 어그로 유지. 놋대야 등 규칙 개조 유물 보유 시 유물 규칙이 우선한다 (2026-08-05 D6). 배율은 초안. EVENTS 부록 B.1"

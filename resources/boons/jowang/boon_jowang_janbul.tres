@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="BoonDef" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/boon_def.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/data/boon_effect.gd" id="2_eff"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/boons/boon_jowang_janbul.png" id="9_icon"]
+
+[sub_resource type="Resource" id="stat_0"]
+script = ExtResource("2_eff")
+hook = 0
+target_key = &"ranged_damage"
+base_value = 0.08
+is_multiplier = true
+rarity_scales = true
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="special_0"]
+script = ExtResource("2_eff")
+hook = 2
+target_key = &"burn"
+base_value = 1.0
+is_multiplier = false
+rarity_scales = false
+chance = 1.0
+duration_sec = 3.0
+cooldown_sec = 0.4
+stack_cap = 5
+condition_key = &""
+condition_value = 0.0
+
+[resource]
+script = ExtResource("1_def")
+icon = ExtResource("9_icon")
+id = &"boon_jowang_janbul"
+display_name = "잔불"
+pantheon = 1
+layer = 0
+sub_pantheon = -1
+weapon_tag = 1
+weapon_tag_inherits = false
+kind = 1
+tier = 1
+act_pool = Array[int]([1, 2, 3])
+implemented = true
+m2_priority = true
+description = "맞힌 적에게 화상 1스택이 남는다. 원거리 피해가 소폭 오른다."
+designer_note = "조왕 1티어 패시브 (docs/systems/BOONS.md 8.3). 2026-08-06 무기 태그를 근접에서 원거리로 옮겼다(계열 주 역할 고정, 2장). 화상 지속 피해 실제 적용은 Godot 후속."
+stat_effects = Array[BoonEffect]([SubResource("stat_0")])
+special_effects = Array[BoonEffect]([SubResource("special_0")])
+special_mark = Array[BoonEffect]([])
+fusion_tags = Array[StringName]([&"beonjim", &"georeum"])
+fusion_accepts = Array[StringName]([&"chigi", &"beotim"])
+fusion_deny_ids = Array[StringName]([])
+activation = 0
+active_cooldown_sec = 0.0
+cooldown_growth_sec = 0.0
+grants_new_attack = false

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ChaseTrack" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/chase_track.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+scroll_speed = 240.0
+close_speed = 30.0
+retry_gap = 40.0
+hit_penalty = 44.0
+start_gap = 96.0
+switch_interval = 0.55
+evade_chance = 0.6
+spawn_min = 0.3
+spawn_max = 0.52
+blocked_min = 2
+blocked_max = 3
+max_hits = 3
+designer_note = "1막 장물아비 추격 2차. 초안(스크롤 150, 간격 0.55~0.95, 막는 레인 1~3, 주기 0.85)이 너무 쉬웠다는 사용자 지적으로 속도와 밀도를 함께 올렸다 (2026-08-07). 스크롤 240이면 장애물 줄이 72~125 논리 단위 간격으로 오고 화면에 두세 줄이 동시에 보인다. 한 줄에 최소 두 레인이 막히고 표적은 0.55초마다 레인을 바꾸며 60% 확률로 플레이어 레인을 피한다. 첫 도전에서 서너 마리 중 두 마리쯤 놓치는 것이 목표다. M1 체감 후 재조정"

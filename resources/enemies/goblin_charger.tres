@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_stats.gd" id="1_stats"]
+[ext_resource type="Resource" path="res://resources/enemies/patterns/goblin_claw.tres" id="2_claw"]
+[ext_resource type="Resource" path="res://resources/enemies/patterns/goblin_swing.tres" id="3_swing"]
+
+[resource]
+script = ExtResource("1_stats")
+display_name = "잡도깨비"
+max_health = 30
+move_speed = 60.0
+contact_damage = 8
+attack_damage = 10
+detect_range = 300.0
+attack_range = 30.0
+attack_cooldown = 1.0
+hitstun = 0.16
+stagger_level = 0
+coin_reward = 3
+threat_pt = 1.0
+attack_patterns = Array[Resource]([ExtResource("2_claw"), ExtResource("3_swing")])

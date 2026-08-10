@@ -1,0 +1,273 @@
+{
+  "group_id": "68620bd3-8e7f-480a-b88b-2c0b1e7a67fa",
+  "states": [
+    {
+      "character": {
+        "id": "762b71f3-2a02-41b0-bb69-a563d98983bf",
+        "name": "Idle",
+        "prompt": "modern korean young office worker dragged into the underworld, white dress shirt with sleeves rolled up, loose dark necktie, dark slacks, short black hair, tired determined face, holding an old hunting rifle with both hands raised and aimed forward in a ready combat stance, 3 head proportions with longer legs, small pixel art character, black outline, muted subdued colors",
+        "size": {
+          "width": 64,
+          "height": 64
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-08-03T04:46:40.382340+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "reloading_the_rifle_lowering_it_slightly_pulling_a": {
+            "south": [
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/south/frame_000.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/south/frame_001.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/south/frame_002.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/south/frame_003.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/south/frame_004.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/south/frame_005.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/south/frame_006.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/south/frame_007.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/south/frame_008.png"
+            ],
+            "east": [
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/east/frame_000.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/east/frame_001.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/east/frame_002.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/east/frame_003.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/east/frame_004.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/east/frame_005.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/east/frame_006.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/east/frame_007.png",
+              "Idle/animations/reloading_the_rifle_lowering_it_slightly_pulling_a/east/frame_008.png"
+            ]
+          },
+          "running_forward_at_full_stride_while_holding_the_r": {
+            "south": [
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r/south/frame_000.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r/south/frame_001.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r/south/frame_002.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r/south/frame_003.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r/south/frame_004.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r/south/frame_005.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r/south/frame_006.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r/south/frame_007.png"
+            ]
+          },
+          "fast_forward_combat_roll_ducking_down_and_tucking": {
+            "east": [
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/east/frame_000.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/east/frame_001.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/east/frame_002.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/east/frame_003.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/east/frame_004.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/east/frame_005.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/east/frame_006.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/east/frame_007.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/east/frame_008.png"
+            ],
+            "south": [
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/south/frame_000.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/south/frame_001.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/south/frame_002.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/south/frame_003.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/south/frame_004.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/south/frame_005.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/south/frame_006.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/south/frame_007.png",
+              "Idle/animations/fast_forward_combat_roll_ducking_down_and_tucking/south/frame_008.png"
+            ]
+          },
+          "firing_the_rifle_forward_while_keeping_it_raised_a": {
+            "south": [
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/south/frame_000.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/south/frame_001.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/south/frame_002.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/south/frame_003.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/south/frame_004.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/south/frame_005.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/south/frame_006.png"
+            ],
+            "east": [
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/east/frame_000.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/east/frame_001.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/east/frame_002.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/east/frame_003.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/east/frame_004.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/east/frame_005.png",
+              "Idle/animations/firing_the_rifle_forward_while_keeping_it_raised_a/east/frame_006.png"
+            ]
+          },
+          "a_proper_gymnastic_forward_roll_crouch_down_and_pl": {
+            "south": [
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/south/frame_000.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/south/frame_001.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/south/frame_002.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/south/frame_003.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/south/frame_004.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/south/frame_005.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/south/frame_006.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/south/frame_007.png"
+            ],
+            "east": [
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/east/frame_000.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/east/frame_001.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/east/frame_002.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/east/frame_003.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/east/frame_004.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/east/frame_005.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/east/frame_006.png",
+              "Idle/animations/a_proper_gymnastic_forward_roll_crouch_down_and_pl/east/frame_007.png"
+            ]
+          },
+          "firing_the_rifle_from_a_low_patrol_carry_pushing_t": {
+            "south": [
+              "Idle/animations/firing_the_rifle_from_a_low_patrol_carry_pushing_t/south/frame_000.png",
+              "Idle/animations/firing_the_rifle_from_a_low_patrol_carry_pushing_t/south/frame_001.png",
+              "Idle/animations/firing_the_rifle_from_a_low_patrol_carry_pushing_t/south/frame_002.png",
+              "Idle/animations/firing_the_rifle_from_a_low_patrol_carry_pushing_t/south/frame_003.png",
+              "Idle/animations/firing_the_rifle_from_a_low_patrol_carry_pushing_t/south/frame_004.png",
+              "Idle/animations/firing_the_rifle_from_a_low_patrol_carry_pushing_t/south/frame_005.png",
+              "Idle/animations/firing_the_rifle_from_a_low_patrol_carry_pushing_t/south/frame_006.png",
+              "Idle/animations/firing_the_rifle_from_a_low_patrol_carry_pushing_t/south/frame_007.png"
+            ]
+          },
+          "standing_still_in_a_patrol_carry_stance_holding_th": {
+            "east": [
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/east/frame_000.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/east/frame_001.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/east/frame_002.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/east/frame_003.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/east/frame_004.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/east/frame_005.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/east/frame_006.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/east/frame_007.png"
+            ],
+            "south": [
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/south/frame_000.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/south/frame_001.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/south/frame_002.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/south/frame_003.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/south/frame_004.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/south/frame_005.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/south/frame_006.png",
+              "Idle/animations/standing_still_in_a_patrol_carry_stance_holding_th/south/frame_007.png"
+            ]
+          },
+          "running_forward_at_full_stride_while_holding_the_r-919278b9": {
+            "east": [
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/east/frame_000.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/east/frame_001.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/east/frame_002.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/east/frame_003.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/east/frame_004.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/east/frame_005.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/east/frame_006.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/east/frame_007.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/east/frame_008.png"
+            ],
+            "south": [
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/south/frame_000.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/south/frame_001.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/south/frame_002.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/south/frame_003.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/south/frame_004.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/south/frame_005.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/south/frame_006.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/south/frame_007.png",
+              "Idle/animations/running_forward_at_full_stride_while_holding_the_r-919278b9/south/frame_008.png"
+            ]
+          },
+          "bayonet_thrust_attack_step_forward_with_the_front": {
+            "east": [
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/east/frame_000.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/east/frame_001.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/east/frame_002.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/east/frame_003.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/east/frame_004.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/east/frame_005.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/east/frame_006.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/east/frame_007.png"
+            ],
+            "south": [
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/south/frame_000.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/south/frame_001.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/south/frame_002.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/south/frame_003.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/south/frame_004.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/south/frame_005.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/south/frame_006.png",
+              "Idle/animations/bayonet_thrust_attack_step_forward_with_the_front/south/frame_007.png"
+            ]
+          },
+          "running_forward_while_holding_the_rifle_low_across": {
+            "south": [
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/south/frame_000.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/south/frame_001.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/south/frame_002.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/south/frame_003.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/south/frame_004.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/south/frame_005.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/south/frame_006.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/south/frame_007.png"
+            ],
+            "east": [
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/east/frame_000.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/east/frame_001.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/east/frame_002.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/east/frame_003.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/east/frame_004.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/east/frame_005.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/east/frame_006.png",
+              "Idle/animations/running_forward_while_holding_the_rifle_low_across/east/frame_007.png"
+            ]
+          },
+          "Taking_Punch": {
+            "south": [
+              "Idle/animations/Taking_Punch/south/frame_000.png",
+              "Idle/animations/Taking_Punch/south/frame_001.png",
+              "Idle/animations/Taking_Punch/south/frame_002.png",
+              "Idle/animations/Taking_Punch/south/frame_003.png",
+              "Idle/animations/Taking_Punch/south/frame_004.png",
+              "Idle/animations/Taking_Punch/south/frame_005.png"
+            ],
+            "east": [
+              "Idle/animations/Taking_Punch/east/frame_000.png",
+              "Idle/animations/Taking_Punch/east/frame_001.png",
+              "Idle/animations/Taking_Punch/east/frame_002.png",
+              "Idle/animations/Taking_Punch/east/frame_003.png",
+              "Idle/animations/Taking_Punch/east/frame_004.png",
+              "Idle/animations/Taking_Punch/east/frame_005.png"
+            ]
+          },
+          "standing_still_and_holding_the_rifle_with_both_han": {
+            "east": [
+              "Idle/animations/standing_still_and_holding_the_rifle_with_both_han/east/frame_000.png",
+              "Idle/animations/standing_still_and_holding_the_rifle_with_both_han/east/frame_001.png",
+              "Idle/animations/standing_still_and_holding_the_rifle_with_both_han/east/frame_002.png",
+              "Idle/animations/standing_still_and_holding_the_rifle_with_both_han/east/frame_003.png"
+            ],
+            "south": [
+              "Idle/animations/standing_still_and_holding_the_rifle_with_both_han/south/frame_000.png",
+              "Idle/animations/standing_still_and_holding_the_rifle_with_both_han/south/frame_001.png",
+              "Idle/animations/standing_still_and_holding_the_rifle_with_both_han/south/frame_002.png",
+              "Idle/animations/standing_still_and_holding_the_rifle_with_both_han/south/frame_003.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-08-03T06:46:45.330386"
+}

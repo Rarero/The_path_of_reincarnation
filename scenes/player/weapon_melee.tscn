@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon_melee.gd" id="1_melee"]
+[ext_resource type="Script" path="res://scripts/components/hitbox.gd" id="2_hitbox"]
+[ext_resource type="Resource" path="res://resources/weapons/hwando.tres" id="3_def"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwando"]
+size = Vector2(34, 28)
+
+[node name="WeaponMelee" type="Node2D"]
+script = ExtResource("1_melee")
+definition = ExtResource("3_def")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(18, -19)
+collision_layer = 32
+collision_mask = 16
+monitoring = false
+script = ExtResource("2_hitbox")
+damage = 10
+active_duration = 0.08
+
+[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_hwando")
+
+[node name="Visual" type="Sprite2D" parent="Hitbox"]
+visible = false

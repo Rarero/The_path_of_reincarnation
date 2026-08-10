@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AttackPattern" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/attack_pattern.gd" id="1_pattern"]
+
+[resource]
+script = ExtResource("1_pattern")
+display_name = "구르기 돌진"
+windup_frames = 18
+active_frames = 72
+recovery_frames = 30
+cooldown_frames = 72
+hit_count = 1
+hit_interval_frames = 0
+damage = 10
+range_px = 190.0
+hitbox_size = Vector2(20, 20)
+hitbox_offset = Vector2(0, -10)
+super_armor = false

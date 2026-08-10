@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_dark_alley"
+display_name = "어둑 골목"
+polarity = 1
+score = -20
+trigger = 0
+room_flavor = 0
+theme_tags = Array[StringName]([&"alley"])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = false
+m2_priority = true
+act = 1
+implemented = false
+params = { "lanterns_off": true, "wisps_only_light": true }
+designer_note = "N3. 방 등불 소등과 시야 축소는 조명 시스템이 있어야 한다. 그 전까지 런 풀에서 뺀다(implemented false). 옛 메모: 방 등불을 소등해 도깨비불만 광원으로 남긴다. 시야 반경 축소와 어둑시니 조명 시스템 공유는 G10. EVENTS 5장 N3"

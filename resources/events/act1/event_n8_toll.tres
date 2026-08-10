@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_toll"
+display_name = "통행세"
+polarity = 1
+score = -10
+trigger = 2
+room_flavor = 0
+theme_tags = Array[StringName]([])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = false
+m2_priority = true
+act = 1
+implemented = false
+params = { "toll_coins": 20 }
+designer_note = "N8. 지불하면 통과, 거부하면 문지기 포함 추가 전투. 요구액과 추가 전투 규모는 밸런싱. EVENTS 5장 N8"

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_angry_merchants"
+display_name = "성난 상인회"
+polarity = 1
+score = -20
+trigger = 2
+room_flavor = 0
+theme_tags = Array[StringName]([&"street"])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = false
+m2_priority = true
+act = 1
+implemented = false
+params = { "wave_on_break": 1, "wave_cap": 3, "trigger_mode": "per_break" }
+designer_note = "N4. 좌판을 부술 때만 발동하는 조건부 위험. 놋대야는 어그로만 완화하고 웨이브는 그대로다. trigger_mode는 M2 체감 후 택1. EVENTS 부록 B.2"

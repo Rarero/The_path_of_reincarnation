@@ -1,0 +1,245 @@
+[gd_scene load_steps=30 format=3]
+
+[ext_resource type="Script" path="res://scenes/bosses/dokkaebi_muneolgul.gd" id="1_boss"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_leaf_angry.png" id="2_angry"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_leaf_calm.png" id="7_calm"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_rock_01.png" id="13_rock1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_rock_02.png" id="14_rock2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_rock_03.png" id="15_rock3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_rock_04.png" id="16_rock4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_crate_01.png" id="17_crate1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_crate_02.png" id="18_crate2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_crate_03.png" id="19_crate3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_steam_band.png" id="20_band"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_steam_puff.png" id="21_puff"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_steam_burst.png" id="22_burst"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/muneolgul_steam_jet.png" id="23_jet"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="3_health"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="4_hurtbox"]
+[ext_resource type="Script" path="res://scripts/components/hitbox.gd" id="5_hitbox"]
+[ext_resource type="Resource" path="res://resources/bosses/dokkaebi_muneolgul.tres" id="6_stats"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(60, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(48, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_steam"]
+size = Vector2(244, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beam"]
+size = Vector2(700, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_interact"]
+size = Vector2(110, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_barrier"]
+size = Vector2(16, 192)
+
+[sub_resource type="Gradient" id="Gradient_crown"]
+offsets = PackedFloat32Array(0, 0.25, 0.7, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.8, 1, 0.95, 0.9, 0.55, 1, 0.9, 0.85, 0)
+
+[sub_resource type="Gradient" id="Gradient_jet"]
+offsets = PackedFloat32Array(0, 0.18, 0.75, 1)
+colors = PackedColorArray(1, 1, 1, 0.15, 1, 1, 1, 0.95, 1, 0.92, 0.86, 0.6, 1, 0.88, 0.8, 0)
+
+[sub_resource type="Curve" id="Curve_crown"]
+_data = [Vector2(0, 0.45), 0.0, 0.0, 0, 0, Vector2(1, 1.0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jet"]
+_data = [Vector2(0, 0.35), 0.0, 0.0, 0, 0, Vector2(1, 1.0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="DokkaebiMuneolgul" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 1
+floor_snap_length = 6.0
+script = ExtResource("1_boss")
+stats = ExtResource("6_stats")
+boss_id = &"dokkaebi_muneolgul"
+display_name = "수문 도깨비 얼굴 대문"
+auto_show_bar = false
+phase_thresholds = Array[float]([0.7, 0.3])
+left_face_texture = ExtResource("2_angry")
+right_face_texture = ExtResource("7_calm")
+rock_textures = Array[Texture2D]([ExtResource("13_rock1"), ExtResource("14_rock2"), ExtResource("15_rock3"), ExtResource("16_rock4")])
+crate_textures = Array[Texture2D]([ExtResource("17_crate1"), ExtResource("18_crate2"), ExtResource("19_crate3")])
+
+[node name="BodyVisual" type="Node2D" parent="."]
+
+[node name="Leaves" type="Node2D" parent="BodyVisual"]
+
+[node name="DoorL" type="Sprite2D" parent="BodyVisual/Leaves"]
+position = Vector2(-114, -96)
+texture = ExtResource("2_angry")
+
+[node name="DoorR" type="Sprite2D" parent="BodyVisual/Leaves"]
+position = Vector2(-38, -96)
+texture = ExtResource("7_calm")
+
+[node name="SpeechLabel" type="Label" parent="BodyVisual"]
+offset_left = -310.0
+offset_top = -226.0
+offset_right = -10.0
+offset_bottom = -210.0
+theme_override_font_sizes/font_size = 10
+text = "생자가 지나갈 길은 없다. 돌아가"
+
+[node name="HintLabel" type="Label" parent="BodyVisual"]
+visible = false
+offset_left = -292.0
+offset_top = -60.0
+offset_right = -172.0
+offset_bottom = -44.0
+theme_override_font_sizes/font_size = 10
+text = "W: 문을 두드린다"
+
+[node name="SteamVisual" type="Node2D" parent="."]
+visible = false
+z_index = -1
+
+[node name="Haze" type="Polygon2D" parent="SteamVisual"]
+color = Color(1, 0.66, 0.5, 1)
+polygon = PackedVector2Array(-396, -104, -152, -104, -152, 0, -396, 0)
+
+[node name="BandBack" type="Sprite2D" parent="SteamVisual"]
+texture_repeat = 2
+modulate = Color(0.72, 0.6, 0.62, 0.72)
+position = Vector2(-396, -104)
+centered = false
+flip_h = true
+texture = ExtResource("20_band")
+region_enabled = true
+region_rect = Rect2(0, 0, 244, 104)
+
+[node name="BandFront" type="Sprite2D" parent="SteamVisual"]
+texture_repeat = 2
+modulate = Color(1, 0.88, 0.78, 0.82)
+position = Vector2(-396, -104)
+centered = false
+texture = ExtResource("20_band")
+region_enabled = true
+region_rect = Rect2(64, 0, 244, 104)
+
+[node name="Crown" type="CPUParticles2D" parent="SteamVisual"]
+position = Vector2(-274, -100)
+emitting = false
+amount = 26
+lifetime = 1.5
+randomness = 0.6
+texture = ExtResource("21_puff")
+emission_shape = 3
+emission_rect_extents = Vector2(122, 6)
+direction = Vector2(-0.35, -1)
+spread = 28.0
+gravity = Vector2(-14, -20)
+initial_velocity_min = 9.0
+initial_velocity_max = 26.0
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+scale_amount_min = 0.6
+scale_amount_max = 1.25
+scale_amount_curve = SubResource("Curve_crown")
+color_ramp = SubResource("Gradient_crown")
+
+[node name="Jet" type="CPUParticles2D" parent="SteamVisual"]
+position = Vector2(-158, -58)
+emitting = false
+amount = 18
+lifetime = 1.0
+randomness = 0.5
+texture = ExtResource("23_jet")
+emission_shape = 3
+emission_rect_extents = Vector2(3, 26)
+direction = Vector2(-1, -0.12)
+spread = 16.0
+gravity = Vector2(-30, -14)
+initial_velocity_min = 90.0
+initial_velocity_max = 165.0
+scale_amount_min = 0.7
+scale_amount_max = 1.4
+scale_amount_curve = SubResource("Curve_jet")
+color_ramp = SubResource("Gradient_jet")
+
+[node name="Vent" type="CPUParticles2D" parent="SteamVisual"]
+position = Vector2(-150, -66)
+emitting = false
+amount = 10
+lifetime = 0.7
+randomness = 0.7
+texture = ExtResource("22_burst")
+emission_shape = 3
+emission_rect_extents = Vector2(2, 14)
+direction = Vector2(-1, -0.5)
+spread = 34.0
+gravity = Vector2(-20, -46)
+initial_velocity_min = 26.0
+initial_velocity_max = 62.0
+scale_amount_min = 0.4
+scale_amount_max = 0.85
+color_ramp = SubResource("Gradient_jet")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_health")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_hurtbox")
+
+[node name="Shape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-152, -96)
+shape = SubResource("RectangleShape2D_hurt")
+
+[node name="SteamHitbox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+monitoring = false
+script = ExtResource("5_hitbox")
+damage = 20
+active_duration = 0.0
+
+[node name="Shape" type="CollisionShape2D" parent="SteamHitbox"]
+position = Vector2(-274, -52)
+shape = SubResource("RectangleShape2D_steam")
+
+[node name="BeamHitbox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+monitoring = false
+script = ExtResource("5_hitbox")
+damage = 16
+active_duration = 0.0
+
+[node name="Shape" type="CollisionShape2D" parent="BeamHitbox"]
+shape = SubResource("RectangleShape2D_beam")
+
+[node name="BeamTelegraph" type="Line2D" parent="."]
+visible = false
+width = 3.0
+default_color = Color(1, 0.3, 0.25, 0.85)
+
+[node name="InteractZone" type="Area2D" parent="."]
+position = Vector2(-200, -40)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="InteractZone"]
+shape = SubResource("RectangleShape2D_interact")
+
+[node name="GateBarrier" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="GateBarrier"]
+position = Vector2(-160, -96)
+shape = SubResource("RectangleShape2D_barrier")

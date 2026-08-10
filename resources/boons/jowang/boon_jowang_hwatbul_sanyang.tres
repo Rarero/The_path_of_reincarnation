@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="BoonDef" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/boon_def.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/data/boon_effect.gd" id="2_eff"]
+
+[sub_resource type="Resource" id="stat_0"]
+script = ExtResource("2_eff")
+hook = 0
+target_key = &"ranged_damage"
+base_value = 0.22
+is_multiplier = true
+rarity_scales = true
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="special_0"]
+script = ExtResource("2_eff")
+hook = 12
+target_key = &"burn_cap_ignite"
+base_value = 1.0
+is_multiplier = false
+rarity_scales = false
+chance = 1.0
+duration_sec = 2.0
+cooldown_sec = 1.0
+stack_cap = 0
+condition_key = &"target_burn_at_cap"
+condition_value = 0.0
+
+[resource]
+script = ExtResource("1_def")
+id = &"boon_jowang_hwatbul_sanyang"
+display_name = "화톳불 사냥"
+pantheon = 1
+layer = 0
+sub_pantheon = -1
+weapon_tag = 1
+weapon_tag_inherits = true
+kind = 2
+tier = 3
+act_pool = Array[int]([1, 2, 3])
+implemented = true
+m2_priority = true
+description = "조왕의 3티어 본체. 원거리 피해가 크게 오르고, 화상이 상한에 닿은 적은 그 자리에서 크게 타오른다."
+designer_note = "조왕 3티어 본체 (BOONS.md 5장). 8.9 이관 자산의 이름을 12종 목록에 맞춰 되살렸다. 서브가 산신이면 addon_id로 overlay_sansin_t3가 얹힌다(9.4). 같은 계열 서브면 부가 없이 본체 강화(규칙 49). ON_STATUS_CAP은 잿불(8.9 미채택)의 발상을 계승한다."
+stat_effects = Array[BoonEffect]([SubResource("stat_0")])
+special_effects = Array[BoonEffect]([SubResource("special_0")])
+special_mark = Array[BoonEffect]([])
+fusion_tags = Array[StringName]([])
+fusion_accepts = Array[StringName]([])
+fusion_deny_ids = Array[StringName]([])
+activation = 0
+active_cooldown_sec = 0.0
+cooldown_growth_sec = 0.0
+grants_new_attack = false

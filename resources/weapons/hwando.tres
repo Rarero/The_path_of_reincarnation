@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponDef" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/weapon_def.gd" id="1_def"]
+[ext_resource type="Resource" path="res://resources/weapons/hwando_slash_1.tres" id="2_s1"]
+[ext_resource type="Resource" path="res://resources/weapons/hwando_slash_2.tres" id="3_s2"]
+[ext_resource type="Resource" path="res://resources/weapons/hwando_finisher.tres" id="4_fin"]
+[ext_resource type="Resource" path="res://resources/weapons/hwando_jump_attack.tres" id="5_jump"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"weapon_hwando"
+display_name = "환도"
+kind = 0
+weapon_tag = 0
+sources = Array[int]([])
+melee_combo = Array[Resource]([ExtResource("2_s1"), ExtResource("3_s2"), ExtResource("4_fin")])
+melee_jump_attack = ExtResource("5_jump")
+hitbox_size = Vector2(34, 28)
+hitbox_offset = Vector2(18, -19)
+jump_attack_land_recovery = 0.12

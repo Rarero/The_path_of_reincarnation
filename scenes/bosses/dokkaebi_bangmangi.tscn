@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scenes/bosses/dokkaebi_bangmangi.gd" id="1_boss"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/dokkaebi_idle_e.png" id="2_sprite"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="3_health"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="4_hurtbox"]
+[ext_resource type="Script" path="res://scripts/components/hitbox.gd" id="5_hitbox"]
+[ext_resource type="Resource" path="res://resources/bosses/dokkaebi_bangmangi.tres" id="6_stats"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/projectile_fire.tscn" id="7_fire"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/projectile.tscn" id="8_treasure"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(40, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(44, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smash"]
+size = Vector2(56, 48)
+
+[node name="DokkaebiBangmangi" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 1
+floor_snap_length = 6.0
+script = ExtResource("1_boss")
+stats = ExtResource("6_stats")
+boss_id = &"dokkaebi_bangmangi"
+display_name = "도깨비 방망이"
+fire_scene = ExtResource("7_fire")
+treasure_scene = ExtResource("8_treasure")
+
+[node name="BodyVisual" type="Sprite2D" parent="."]
+position = Vector2(0, -36)
+scale = Vector2(2, 2)
+texture = ExtResource("2_sprite")
+hframes = 9
+flip_h = true
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_health")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_hurtbox")
+
+[node name="Shape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_hurt")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(18, -34)
+
+[node name="SmashHitbox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+monitoring = false
+script = ExtResource("5_hitbox")
+damage = 16
+active_duration = 0.18
+
+[node name="Shape" type="CollisionShape2D" parent="SmashHitbox"]
+position = Vector2(30, -20)
+shape = SubResource("RectangleShape2D_smash")

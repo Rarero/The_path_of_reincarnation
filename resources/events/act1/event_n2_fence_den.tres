@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_fence_den"
+display_name = "장물아비 소굴"
+polarity = 1
+score = -20
+trigger = 0
+room_flavor = 1
+theme_tags = Array[StringName]([&"alley"])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = false
+m2_priority = true
+act = 1
+implemented = true
+params = { "thief_count": 4, "flee_gauge_sec": 8.0, "min_coins_trigger": 0, "steal_on_entry_rate": 0.2, "min_thief_count": 3, "max_thief_count": 5, "rich_coins": 200, "return_bonus_mult": 1.2, "grunt_count": 1 }
+designer_note = "N2. 추격 이벤트. 순점수 -20 (2026-08-05 D6 정합, 옛 표기 -30). 진입 강탈과 추격 회수, 전원 처치 시 떨이 유물 1개. 구현은 G6. 파라미터는 부록 A.2 초안"

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FusionRule" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/fusion_rule.gd" id="1_rule"]
+
+[resource]
+script = ExtResource("1_rule")
+main_pantheon = 0
+sub_pantheon = 0
+is_active_fusion = false
+main_tier = 1
+sub_tier = 1
+result_id = &"boon_sansin_sanullim"
+addon_id = &""
+modifier_id = &""
+success_chance = 0.95
+great_chance = 0.05

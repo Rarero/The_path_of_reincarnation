@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/room_boss_daemun_gwangjang.gd" id="1_room"]
+[ext_resource type="Script" path="res://scripts/map/room_terrain.gd" id="2_terrain"]
+[ext_resource type="TileSet" path="res://resources/tiles/tileset_act1.tres" id="3_tiles"]
+[ext_resource type="PackedScene" path="res://scenes/bosses/dokkaebi_muneolgul.tscn" id="4_boss"]
+[ext_resource type="PackedScene" path="res://scenes/levels/stall_cover.tscn" id="5_stall"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_zone"]
+size = Vector2(480, 336)
+
+[node name="RoomBossDaemunGwangjang" type="Node2D"]
+script = ExtResource("1_room")
+kind = "combat"
+room_width = 512
+rage_threshold = 99999.0
+rage_step_interval = 10.0
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="Tiles" type="TileMapLayer" parent="Terrain"]
+tile_set = ExtResource("3_tiles")
+script = ExtResource("2_terrain")
+layout = "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+................................
+...=====....=====...............
+................................
+................................
+GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG"
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Boss" parent="Enemies" instance=ExtResource("4_boss")]
+position = Vector2(512, 336)
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Stall1" parent="Props" instance=ExtResource("5_stall")]
+position = Vector2(230, 336)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(56, 336)
+
+[node name="Zone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="Zone"]
+position = Vector2(256, 176)
+shape = SubResource("RectangleShape2D_zone")

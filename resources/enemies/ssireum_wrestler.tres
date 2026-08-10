@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_stats.gd" id="1_stats"]
+[ext_resource type="Resource" path="res://resources/enemies/patterns/wrestler_grab.tres" id="2_p0"]
+[ext_resource type="Resource" path="res://resources/enemies/patterns/wrestler_leap.tres" id="3_p1"]
+
+[resource]
+script = ExtResource("1_stats")
+display_name = "씨름꾼"
+max_health = 95
+move_speed = 44.0
+contact_damage = 5
+attack_damage = 20
+detect_range = 300.0
+attack_range = 34.0
+attack_cooldown = 1.6
+hitstun = 0.14
+stagger_level = 2
+coin_reward = 10
+threat_pt = 4.0
+attack_patterns = Array[Resource]([ExtResource("2_p0"), ExtResource("3_p1")])

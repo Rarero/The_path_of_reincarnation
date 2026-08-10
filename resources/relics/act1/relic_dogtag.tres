@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="RelicDef" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/relic_def.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/data/relic_effect.gd" id="2_eff"]
+
+[sub_resource type="Resource" id="eff_survive"]
+script = ExtResource("2_eff")
+hook = 5
+target_key = &"survive_lethal"
+value = 0.0
+is_multiplier = false
+cooldown_sec = 0.0
+charges_per_run = 1
+recharge_at_rest = true
+
+[resource]
+script = ExtResource("1_def")
+id = &"relic_dogtag"
+display_name = "군번줄"
+grade = 2
+axis = 1
+era = 1
+tags = Array[StringName]([&"modern"])
+pantheon_key = &""
+act_pool = Array[int]([1, 2])
+sources = Array[StringName]([&"treasure", &"secret", &"boss"])
+exclusive_group = &""
+unique = true
+m2_priority = true
+description = "명부에 없는 자에게 남은 유일한 신분 증명. 치명적 피해를 런당 1회 무효로 하고 쉼터에서 다시 채운다."
+designer_note = "C축 진품 현대. 부활류는 강력하므로 런당 1회로 제한 (docs/systems/RELICS.md 6.2 17번). boss 소스 추가는 2026-08-05 D6(6.3절 막 보스 진품 확정 드랍)에 따른 활성화다. 현재 M2 진품 등급 유일종이라 문얼굴/방망이 보상이 이 유물로 확정된다."
+effects = Array[RelicEffect]([SubResource("eff_survive")])

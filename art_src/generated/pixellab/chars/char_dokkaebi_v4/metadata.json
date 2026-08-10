@@ -1,0 +1,36 @@
+{
+  "group_id": "6632c304-bde0-4ff4-9e3e-4e485ea96e63",
+  "states": [
+    {
+      "character": {
+        "id": "a3fdc4e0-2a65-41d0-9cfe-ac54496b313b",
+        "name": "Idle",
+        "prompt": "small korean dokkaebi imp transformed from an old wooden pestle, lower body is a single worn wooden pestle with wood grain and cracks instead of legs, one-legged, small stocky upper body, wild shaggy mane hair covering half the face, wide glowing warm orange eyes, big mischievous open grin, small bamboo paeraengi hat, dusky indigo-violet skin, tattered dark purple hanbok vest, chibi proportions, small pixel art character, black outline, muted subdued colors, NO horns, NO oni, NO goblin",
+        "size": {
+          "width": 76,
+          "height": 76
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-08-02T14:59:55.038982+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-08-02T15:07:05.473931"
+}

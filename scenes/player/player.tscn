@@ -1,0 +1,107 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_player"]
+[ext_resource type="SpriteFrames" path="res://scenes/player/player_frames.tres" id="8_sprite"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fx/slash_arc_24.png" id="9_slash"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fx/muzzle_flash_8.png" id="10_flash"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="2_health"]
+[ext_resource type="Script" path="res://scripts/components/stamina.gd" id="3_stamina"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="4_hurtbox"]
+[ext_resource type="Script" path="res://scenes/player/weapon_rifle.gd" id="5_rifle"]
+[ext_resource type="Script" path="res://scripts/components/hitbox.gd" id="6_hitbox"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/projectile.tscn" id="7_projectile"]
+[ext_resource type="PackedScene" path="res://scenes/player/weapon_melee.tscn" id="20_hwando"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon_sprite.gd" id="21_weapon_sprite"]
+[ext_resource type="Texture2D" path="res://assets/sprites/weapons/hwando_angles.png" id="22_angles"]
+[ext_resource type="Resource" path="res://resources/weapons/hwando_anchors.tres" id="23_anchors"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(12, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(14, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_melee"]
+size = Vector2(32, 26)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 257
+floor_snap_length = 6.0
+script = ExtResource("1_player")
+
+[node name="BodyVisual" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -19)
+sprite_frames = ExtResource("8_sprite")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="WeaponSprite" type="Sprite2D" parent="BodyVisual"]
+visible = false
+script = ExtResource("21_weapon_sprite")
+angles_texture = ExtResource("22_angles")
+anchors = ExtResource("23_anchors")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_health")
+maximum = 100
+
+[node name="Stamina" type="Node" parent="."]
+script = ExtResource("3_stamina")
+maximum = 100.0
+regen_per_second = 45.0
+regen_delay = 0.25
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("4_hurtbox")
+
+[node name="Shape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_hurt")
+
+[node name="Rifle" type="Node2D" parent="."]
+script = ExtResource("5_rifle")
+bullet_scene = ExtResource("7_projectile")
+magazine_size = 8
+fire_interval = 0.16
+reload_time = 1.1
+bullet_damage = 8
+bullet_speed = 520.0
+
+[node name="Muzzle" type="Marker2D" parent="Rifle"]
+position = Vector2(14, -18)
+
+[node name="Flash" type="Sprite2D" parent="Rifle/Muzzle"]
+visible = false
+texture = ExtResource("10_flash")
+
+[node name="MeleeHitbox" type="Area2D" parent="Rifle"]
+position = Vector2(22, -19)
+collision_layer = 32
+collision_mask = 16
+monitoring = false
+script = ExtResource("6_hitbox")
+damage = 16
+active_duration = 0.12
+
+[node name="Shape" type="CollisionShape2D" parent="Rifle/MeleeHitbox"]
+shape = SubResource("RectangleShape2D_melee")
+
+[node name="Visual" type="Sprite2D" parent="Rifle/MeleeHitbox"]
+visible = false
+texture = ExtResource("9_slash")
+
+[node name="Hwando" parent="." instance=ExtResource("20_hwando")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -48)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0

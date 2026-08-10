@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700" font-family="sans-serif">
+  <title>1막 도깨비 시장 4대 배경 구조물 측면 입면</title>
+  <desc>docs/DESIGN_ACT1.md 2.6절 참고 도식. 가판대, 씨름장, 노름판, 주막의 측면 실루엣과 타일 크기 비율. 사용자 스케치(2026-07-25) 기반. 최종 에셋이 아니라 비율 참조용.</desc>
+
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0 L0 0 0 24" fill="none" stroke="#2e2e46" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="700" fill="#12121c"/>
+  <text x="24" y="34" fill="#f0e2c8" font-size="20" font-weight="bold">1막 도깨비 시장 - 4대 배경 구조물 측면 입면 (참조 도식)</text>
+  <text x="24" y="56" fill="#8a86a0" font-size="13">docs/DESIGN_ACT1.md 2.6절 / 격자 1칸 = 1타일 / 크기는 초안, 타일 크기 확정(M1) 후 픽셀 환산</text>
+
+  <!-- 범례 -->
+  <g font-size="12">
+    <rect x="24" y="70" width="14" height="14" fill="#8a6a3c"/>
+    <text x="44" y="82" fill="#c8bfa0">발판 가능 (1타일 높이)</text>
+    <rect x="196" y="70" width="14" height="14" fill="#5d4a2c"/>
+    <text x="216" y="82" fill="#c8bfa0">밟을 수 없음 (지붕, 처마)</text>
+    <rect x="392" y="70" width="14" height="14" fill="#e8973a"/>
+    <text x="412" y="82" fill="#c8bfa0">광원</text>
+    <rect x="474" y="70" width="14" height="14" fill="#f4ecd6"/>
+    <text x="494" y="82" fill="#c8bfa0">상호작용</text>
+  </g>
+
+  <!-- ============ 1. 가판대 ============ -->
+  <g>
+    <text x="24" y="118" fill="#f0e2c8" font-size="15" font-weight="bold">1. 가판대 (좌판) - prop_act1_stall</text>
+    <text x="24" y="136" fill="#8a86a0" font-size="12">폭 4~6타일, 높이 4타일 / 파괴 가능, 드랍 있음 / 진열대 = 엄폐물 겸 1타일 발판</text>
+    <rect x="24" y="146" width="216" height="168" fill="url(#grid)" stroke="#3a3a58"/>
+    <!-- 지면 -->
+    <rect x="24" y="290" width="216" height="24" fill="#4a3a28"/>
+    <!-- 천막 지붕 (처진 천) -->
+    <path d="M48 194 Q120 182 216 194 L216 202 Q120 190 48 202 Z" fill="#5d4a2c"/>
+    <!-- 기둥 4개 -->
+    <rect x="52" y="196" width="5" height="94" fill="#8a6a3c"/>
+    <rect x="96" y="196" width="5" height="94" fill="#6b5334"/>
+    <rect x="164" y="196" width="5" height="94" fill="#6b5334"/>
+    <rect x="208" y="196" width="5" height="94" fill="#8a6a3c"/>
+    <!-- 진열대 2단 -->
+    <rect x="48" y="266" width="168" height="8" fill="#8a6a3c"/>
+    <rect x="60" y="242" width="144" height="7" fill="#7d6741"/>
+    <!-- 진열품 -->
+    <g fill="#c8a15a">
+      <circle cx="80" cy="236" r="5"/><circle cx="94" cy="236" r="5"/><circle cx="108" cy="237" r="4"/>
+      <rect x="140" y="230" width="18" height="12"/>
+      <rect x="170" y="232" width="14" height="10"/>
+    </g>
+    <!-- 매달린 등불 -->
+    <circle cx="132" cy="204" r="6" fill="#e8973a"/>
+    <ellipse cx="132" cy="290" rx="52" ry="10" fill="#f0a44a" opacity="0.14"/>
+    <!-- 치수 -->
+    <path d="M48 322 L216 322" stroke="#7f9ad0" stroke-width="1"/>
+    <text x="112" y="336" fill="#7f9ad0" font-size="11">폭 4~6칸</text>
+    <path d="M36 194 L36 290" stroke="#7f9ad0" stroke-width="1"/>
+    <text x="8" y="246" fill="#7f9ad0" font-size="11" transform="rotate(-90 20 246)">높이 4칸 (점프 3.5타일 초과)</text>
+  </g>
+
+  <!-- ============ 2. 씨름장 ============ -->
+  <g>
+    <text x="272" y="118" fill="#f0e2c8" font-size="15" font-weight="bold">2. 씨름장 - prop_act1_wrestling_ring</text>
+    <text x="272" y="136" fill="#8a86a0" font-size="12">폭 12~16타일, 단 높이 1타일 / 불변 / 중앙이 반 타일 낮은 접시형, 좌우 단 = 장외 경계</text>
+    <rect x="272" y="146" width="336" height="168" fill="url(#grid)" stroke="#3a3a58"/>
+    <rect x="272" y="290" width="336" height="24" fill="#4a3a28"/>
+    <!-- 구경꾼 실루엣 (L2) -->
+    <g fill="#2f2a4a" opacity="0.9">
+      <rect x="300" y="252" width="9" height="26"/><rect x="316" y="248" width="9" height="30"/>
+      <rect x="332" y="254" width="8" height="24"/><rect x="540" y="250" width="9" height="28"/>
+      <rect x="556" y="254" width="8" height="24"/><rect x="572" y="248" width="9" height="30"/>
+    </g>
+    <text x="352" y="244" fill="#6f6a86" font-size="10">구경꾼 실루엣은 L2 중경 전용</text>
+    <!-- 깃대 -->
+    <rect x="292" y="196" width="4" height="82" fill="#6b5334"/>
+    <path d="M296 198 L322 206 L296 214 Z" fill="#c85a3c" opacity="0.85"/>
+    <rect x="588" y="196" width="4" height="82" fill="#6b5334"/>
+    <path d="M588 198 L562 206 L588 214 Z" fill="#c85a3c" opacity="0.85"/>
+    <!-- 흙 단 + 모래 접시 -->
+    <path d="M320 290 L332 266 L548 266 L560 290 Z" fill="#7d6741"/>
+    <path d="M336 268 Q440 282 544 268 L548 266 L332 266 Z" fill="#a08657"/>
+    <!-- 장외 표시 -->
+    <path d="M332 266 L332 250" stroke="#d3453c" stroke-width="2" stroke-dasharray="4 3"/>
+    <path d="M548 266 L548 250" stroke="#d3453c" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="286" y="246" fill="#d3453c" font-size="10">장외</text>
+    <text x="552" y="246" fill="#d3453c" font-size="10">장외</text>
+    <!-- 상금 함 -->
+    <rect x="440" y="256" width="20" height="10" fill="#f4ecd6"/>
+    <text x="466" y="264" fill="#f4ecd6" font-size="10">상금 함 (상호작용)</text>
+    <!-- 치수 -->
+    <path d="M320 322 L560 322" stroke="#7f9ad0" stroke-width="1"/>
+    <text x="404" y="336" fill="#7f9ad0" font-size="11">폭 12~16칸 (내기방용 축소판 10~12칸)</text>
+  </g>
+
+  <!-- ============ 3. 노름판 ============ -->
+  <g>
+    <text x="640" y="118" fill="#f0e2c8" font-size="15" font-weight="bold">3. 노름판 - prop_act1_gambling_table</text>
+    <text x="640" y="136" fill="#8a86a0" font-size="12">폭 6~8타일, 지붕 3~4타일 / 반응(파괴 불가) / 낮은 상은 통과 가능, 발판 아님</text>
+    <rect x="640" y="146" width="336" height="168" fill="url(#grid)" stroke="#3a3a58"/>
+    <rect x="640" y="290" width="336" height="24" fill="#4a3a28"/>
+    <!-- 천막 지붕 -->
+    <path d="M676 194 L940 194 L928 206 L688 206 Z" fill="#5d4a2c"/>
+    <rect x="690" y="206" width="5" height="84" fill="#8a6a3c"/>
+    <rect x="920" y="206" width="5" height="84" fill="#8a6a3c"/>
+    <!-- 멍석 -->
+    <rect x="700" y="284" width="212" height="6" fill="#a08657"/>
+    <!-- 낮은 상 -->
+    <rect x="762" y="272" width="86" height="6" fill="#7d6741"/>
+    <rect x="768" y="278" width="5" height="6" fill="#6b5334"/>
+    <rect x="838" y="278" width="5" height="6" fill="#6b5334"/>
+    <!-- 엽전 무더기, 투전 -->
+    <g fill="#c8a15a">
+      <circle cx="780" cy="268" r="4"/><circle cx="788" cy="268" r="4"/><circle cx="784" cy="262" r="4"/>
+      <rect x="810" y="264" width="14" height="8"/>
+    </g>
+    <!-- 야바위 항아리 3개 -->
+    <g fill="#6b5334">
+      <ellipse cx="712" cy="276" rx="10" ry="12"/>
+      <ellipse cx="736" cy="276" rx="10" ry="12"/>
+      <ellipse cx="890" cy="276" rx="10" ry="12"/>
+    </g>
+    <text x="700" y="248" fill="#6f6a86" font-size="10">야바위 항아리 3개 (내기 연출)</text>
+    <!-- 등불 -->
+    <circle cx="806" cy="212" r="6" fill="#e8973a"/>
+    <ellipse cx="806" cy="290" rx="60" ry="10" fill="#f0a44a" opacity="0.14"/>
+    <!-- 판돈 자리 -->
+    <rect x="856" y="266" width="18" height="6" fill="#f4ecd6"/>
+    <text x="878" y="272" fill="#f4ecd6" font-size="10">판돈</text>
+    <!-- 치수 -->
+    <path d="M676 322 L940 322" stroke="#7f9ad0" stroke-width="1"/>
+    <text x="780" y="336" fill="#7f9ad0" font-size="11">폭 6~8칸</text>
+  </g>
+
+  <!-- ============ 4. 주막 (식당 좌판) ============ -->
+  <g>
+    <text x="24" y="386" fill="#f0e2c8" font-size="15" font-weight="bold">4. 식당 좌판 (주막) - prop_act1_tavern</text>
+    <text x="24" y="404" fill="#8a86a0" font-size="12">폭 8~10타일, 높이 4~5타일 / 반응 (평상과 항아리는 파괴 가능 하위 요소) / 평상 = 1타일 발판, 처마는 밟을 수 없음</text>
+    <rect x="24" y="414" width="440" height="216" fill="url(#grid)" stroke="#3a3a58"/>
+    <rect x="24" y="582" width="440" height="48" fill="#4a3a28"/>
+    <!-- 초가 지붕 -->
+    <path d="M60 462 Q252 434 428 462 L440 478 L48 478 Z" fill="#6b5334"/>
+    <path d="M48 478 L440 478 L432 488 L56 488 Z" fill="#5d4a2c"/>
+    <!-- 기둥 -->
+    <rect x="66" y="488" width="6" height="94" fill="#8a6a3c"/>
+    <rect x="416" y="488" width="6" height="94" fill="#8a6a3c"/>
+    <rect x="240" y="488" width="5" height="94" fill="#6b5334"/>
+    <!-- 주기(술 깃발) -->
+    <rect x="60" y="440" width="4" height="48" fill="#6b5334"/>
+    <path d="M64 442 L112 450 L64 462 Z" fill="#e8d9b0" opacity="0.9"/>
+    <text x="120" y="454" fill="#6f6a86" font-size="10">주기(술 깃발) 글자는 도깨비 문자풍 위조 글자</text>
+    <!-- 처마 등불 2기 -->
+    <circle cx="140" cy="500" r="7" fill="#e8973a"/>
+    <circle cx="340" cy="500" r="7" fill="#e8973a"/>
+    <!-- 평상 (발판) -->
+    <rect x="252" y="546" width="150" height="9" fill="#8a6a3c"/>
+    <rect x="258" y="555" width="6" height="27" fill="#6b5334"/>
+    <rect x="390" y="555" width="6" height="27" fill="#6b5334"/>
+    <!-- 개다리소반 + 그릇 -->
+    <rect x="300" y="536" width="34" height="5" fill="#7d6741"/>
+    <circle cx="310" cy="531" r="4" fill="#c8a15a"/>
+    <circle cx="324" cy="531" r="4" fill="#c8a15a"/>
+    <!-- 화덕과 국솥 -->
+    <path d="M96 556 L164 556 L156 582 L104 582 Z" fill="#3f342a"/>
+    <ellipse cx="130" cy="552" rx="30" ry="9" fill="#57493a"/>
+    <ellipse cx="130" cy="548" rx="26" ry="7" fill="#7d6741"/>
+    <circle cx="130" cy="570" r="9" fill="#e8973a" opacity="0.9"/>
+    <ellipse cx="130" cy="582" rx="58" ry="12" fill="#f0a44a" opacity="0.16"/>
+    <rect x="120" y="540" width="20" height="6" fill="#f4ecd6"/>
+    <text x="150" y="536" fill="#f4ecd6" font-size="10">국솥 (상호작용 후보: 음식 소모품)</text>
+    <!-- 연기 (L4) -->
+    <path d="M130 540 Q120 520 132 506 Q142 492 128 476" stroke="#8a86a0" stroke-width="2" fill="none" opacity="0.5"/>
+    <text x="150" y="490" fill="#6f6a86" font-size="10">연기는 L4 전경</text>
+    <!-- 술항아리 -->
+    <g fill="#57493a">
+      <ellipse cx="196" cy="568" rx="14" ry="16"/>
+      <ellipse cx="220" cy="572" rx="11" ry="12"/>
+    </g>
+    <!-- 치수 -->
+    <path d="M60 610 L428 610" stroke="#7f9ad0" stroke-width="1"/>
+    <text x="220" y="624" fill="#7f9ad0" font-size="11">폭 8~10칸</text>
+    <path d="M40 462 L40 582" stroke="#7f9ad0" stroke-width="1"/>
+    <text x="10" y="530" fill="#7f9ad0" font-size="11" transform="rotate(-90 22 530)">높이 4~5칸</text>
+  </g>
+
+  <!-- ============ 배치 규칙 요약 ============ -->
+  <g>
+    <text x="500" y="386" fill="#f0e2c8" font-size="15" font-weight="bold">배치 규칙 요약 (3.4절, 2.6절)</text>
+    <rect x="500" y="398" width="476" height="232" fill="#1b1b2e" stroke="#3a3a58"/>
+    <g fill="#c8bfa0" font-size="12">
+      <text x="516" y="422">1. 대형 구조물(씨름장, 노름판, 주막)은 방당 1기만. 실루엣 겹침 금지</text>
+      <text x="516" y="444">2. 근경 구조물은 등불 빛무리 간격에 맞춰 4~6타일 주기. 3기마다 1회 간격을 깨고</text>
+      <text x="532" y="460">넓은 공백(전투 공간)을 준다</text>
+      <text x="516" y="482">3. 거리형 전투방은 파괴 가능 가판대 3기 이상 (잡도깨비, 씨름꾼 기믹의 지형 조건)</text>
+      <text x="516" y="504">4. 전투방 수직 층수는 2~3단. 등불 도깨비 고지대 배치의 최소 조건이 2단</text>
+      <text x="516" y="526">5. 손님 도깨비 실루엣은 L2 전용. 근경에 두지 않아 적과 혼동을 막는다</text>
+      <text x="516" y="548">6. 진입부와 출구부는 폭 4~6타일 평지 안전 구간</text>
+      <text x="516" y="570">7. 비밀방 진입 신호 3종만 사용: 경로 밖 도깨비불 / 벽으로 이어진 금줄 /</text>
+      <text x="532" y="586">벽 뒤에서 새는 등불 빛무리</text>
+      <text x="516" y="608">8. 상호작용 오브젝트만 밝은 아웃라인. 장식은 아웃라인을 배경 명도에 묶는다</text>
+    </g>
+  </g>
+
+  <text x="24" y="656" fill="#6f6a86" font-size="11">원본 스케치: 사용자 제공 (2026-07-25) 가판대, 씨름장, 노름판, 식당 4종. 이 도식은 그 스케치를 측면 입면과 타일 격자로 규격화한 것이다</text>
+  <text x="24" y="676" fill="#6f6a86" font-size="11">최종 에셋이 아니다. 픽셀아트 제작은 art_src/requests/003_act1_structures.md 요청서로 진행한다</text>
+</svg>

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AttackPattern" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/attack_pattern.gd" id="1_pattern"]
+
+[resource]
+script = ExtResource("1_pattern")
+display_name = "근접 휘두르기"
+windup_frames = 16
+active_frames = 5
+recovery_frames = 20
+cooldown_frames = 36
+hit_count = 1
+hit_interval_frames = 0
+damage = 10
+range_px = 30.0
+hitbox_size = Vector2(26, 24)
+hitbox_offset = Vector2(17, -15)
+super_armor = false

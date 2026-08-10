@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/stage.gd" id="1_stage"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="2_hud"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://scenes/levels/room_combat_01.tscn" id="4_combat01"]
+[ext_resource type="PackedScene" path="res://scenes/levels/room_platform_01.tscn" id="5_platform01"]
+[ext_resource type="PackedScene" path="res://scenes/levels/bg_act1.tscn" id="6_bg"]
+
+[node name="StageVerify" type="Node2D"]
+script = ExtResource("1_stage")
+room_scenes = Array[PackedScene]([ExtResource("4_combat01"), ExtResource("5_platform01")])
+room_width = 640
+restart_delay = 1.2
+
+[node name="BgAct1" parent="." instance=ExtResource("6_bg")]
+
+[node name="Hud" parent="." instance=ExtResource("2_hud")]
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_player")]
+position = Vector2(64, 336)

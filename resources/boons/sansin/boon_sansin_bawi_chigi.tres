@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="BoonDef" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/boon_def.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/data/boon_effect.gd" id="2_eff"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/boons/boon_sansin_bawi_chigi.png" id="9_icon"]
+
+[sub_resource type="Resource" id="stat_0"]
+script = ExtResource("2_eff")
+hook = 0
+target_key = &"melee_damage"
+base_value = 0.08
+is_multiplier = true
+rarity_scales = true
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="special_0"]
+script = ExtResource("2_eff")
+hook = 14
+target_key = &"bawi_chigi_knockback"
+base_value = 1.0
+is_multiplier = false
+rarity_scales = false
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 10.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[resource]
+script = ExtResource("1_def")
+icon = ExtResource("9_icon")
+id = &"boon_sansin_bawi_chigi"
+display_name = "바위 치기"
+pantheon = 0
+layer = 0
+sub_pantheon = -1
+weapon_tag = 0
+weapon_tag_inherits = false
+kind = 0
+tier = 1
+act_pool = Array[int]([1, 2, 3])
+implemented = true
+m2_priority = true
+description = "쓰면 다음 근접 공격 1회가 적을 날려 보낸다. 날아간 적이 벽에 부딪히면 추가 피해와 기절을 받는다. 근접 피해가 소폭 오른다."
+designer_note = "산신 1티어 액티브 (docs/systems/BOONS.md 8.2). 지속형인지 다음 근접 1회인지 미정이었으나 2026-08-06 다음 근접 공격 1회로 확정. 벽 충돌 피해는 이 효과가 유일한 출처이며 유물은 개입하지 않는다 (RELICS 3장). 넉백과 벽 충돌 판정은 Godot 후속."
+stat_effects = Array[BoonEffect]([SubResource("stat_0")])
+special_effects = Array[BoonEffect]([SubResource("special_0")])
+special_mark = Array[BoonEffect]([])
+fusion_tags = Array[StringName]([&"chigi", &"georeum"])
+fusion_accepts = Array[StringName]([&"beonjim", &"mom"])
+fusion_deny_ids = Array[StringName]([])
+activation = 1
+active_cooldown_sec = 10.0
+cooldown_growth_sec = 0.0
+grants_new_attack = false

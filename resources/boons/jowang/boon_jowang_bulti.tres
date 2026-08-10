@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="BoonDef" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/boon_def.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/data/boon_effect.gd" id="2_eff"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/boons/boon_jowang_bulti.png" id="9_icon"]
+
+[sub_resource type="Resource" id="stat_0"]
+script = ExtResource("2_eff")
+hook = 0
+target_key = &"burn_duration"
+base_value = 0.15
+is_multiplier = true
+rarity_scales = true
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="special_0"]
+script = ExtResource("2_eff")
+hook = 2
+target_key = &"burn"
+base_value = 2.0
+is_multiplier = false
+rarity_scales = false
+chance = 1.0
+duration_sec = 3.0
+cooldown_sec = 0.4
+stack_cap = 5
+condition_key = &"after_reload"
+condition_value = 0.0
+
+[resource]
+script = ExtResource("1_def")
+icon = ExtResource("9_icon")
+id = &"boon_jowang_bulti"
+display_name = "불티"
+pantheon = 1
+layer = 0
+sub_pantheon = -1
+weapon_tag = 1
+weapon_tag_inherits = false
+kind = 1
+tier = 1
+act_pool = Array[int]([1, 2, 3])
+implemented = true
+m2_priority = true
+description = "재장전을 마친 뒤 첫 명중은 화상 2스택을 준다. 화상 지속 시간이 소폭 늘어난다."
+designer_note = "조왕 1티어 패시브 (docs/systems/BOONS.md 8.3). condition_key after_reload는 9.2 조건 키 어휘표에 있다. 재장전 완료 판정과 화상 지속 연장 실제 적용은 Godot 후속."
+stat_effects = Array[BoonEffect]([SubResource("stat_0")])
+special_effects = Array[BoonEffect]([SubResource("special_0")])
+special_mark = Array[BoonEffect]([])
+fusion_tags = Array[StringName]([&"beonjim", &"myeongjul"])
+fusion_accepts = Array[StringName]([&"chigi", &"beotim"])
+fusion_deny_ids = Array[StringName]([])
+activation = 0
+active_cooldown_sec = 0.0
+cooldown_growth_sec = 0.0
+grants_new_attack = false

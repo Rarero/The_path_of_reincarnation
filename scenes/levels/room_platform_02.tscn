@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/room.gd" id="1_room"]
+[ext_resource type="PackedScene" path="res://scenes/levels/block.tscn" id="2_block"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_zone"]
+size = Vector2(608, 336)
+
+[node name="RoomPlatform02" type="Node2D"]
+script = ExtResource("1_room")
+kind = "platforming"
+rage_threshold = 90.0
+rage_step_interval = 10.0
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="Ceiling" parent="Terrain" instance=ExtResource("2_block")]
+position = Vector2(0, 0)
+size = Vector2i(640, 16)
+
+[node name="WallLeft" parent="Terrain" instance=ExtResource("2_block")]
+position = Vector2(0, 16)
+size = Vector2i(16, 272)
+
+[node name="WallRight" parent="Terrain" instance=ExtResource("2_block")]
+position = Vector2(624, 16)
+size = Vector2i(16, 272)
+
+[node name="Floor" parent="Terrain" instance=ExtResource("2_block")]
+position = Vector2(0, 336)
+size = Vector2i(640, 16)
+
+[node name="Platform1" parent="Terrain" instance=ExtResource("2_block")]
+position = Vector2(112, 288)
+size = Vector2i(64, 16)
+
+[node name="Platform2" parent="Terrain" instance=ExtResource("2_block")]
+position = Vector2(400, 288)
+size = Vector2i(64, 16)
+
+[node name="Platform3" parent="Terrain" instance=ExtResource("2_block")]
+position = Vector2(480, 240)
+size = Vector2i(96, 16)
+
+[node name="ShaftWallLeft" parent="Terrain" instance=ExtResource("2_block")]
+position = Vector2(240, 192)
+size = Vector2i(16, 96)
+
+[node name="ShaftWallRight" parent="Terrain" instance=ExtResource("2_block")]
+position = Vector2(336, 192)
+size = Vector2i(16, 96)
+
+[node name="ShaftLedge" parent="Terrain" instance=ExtResource("2_block")]
+position = Vector2(352, 176)
+size = Vector2i(96, 16)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(64, 336)
+
+[node name="Zone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="Zone"]
+position = Vector2(320, 176)
+shape = SubResource("RectangleShape2D_zone")

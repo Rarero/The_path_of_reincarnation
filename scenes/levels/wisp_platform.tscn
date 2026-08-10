@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/wisp_platform.gd" id="1_wisp"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="2_health"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="3_hurtbox"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fx/glow_radial_64.png" id="4_glow"]
+[ext_resource type="Texture2D" path="res://assets/sprites/levels/wisp_platform_fire.png" id="5_fire"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(32, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_detect"]
+radius = 26.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(20, 20)
+
+[node name="WispPlatform" type="Node2D"]
+script = ExtResource("1_wisp")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Platform"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_platform")
+disabled = true
+one_way_collision = true
+one_way_collision_margin = 2.0
+
+[node name="Detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="Detect"]
+shape = SubResource("CircleShape2D_detect")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_health")
+maximum = 100
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hurtbox")
+
+[node name="Shape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_hurt")
+
+[node name="Glow" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("4_glow")
+
+[node name="PlatformVisual" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-16, 0, 16, 0, 16, 4, -16, 4)
+
+[node name="Flame" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("5_fire")

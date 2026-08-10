@@ -1,0 +1,36 @@
+{
+  "group_id": "1cfec126-c8f2-4b58-920d-1020001b5ce3",
+  "states": [
+    {
+      "character": {
+        "id": "c12e7bfb-34f6-4f87-87be-1f76bcc171ed",
+        "name": "Idle",
+        "prompt": "korean dokkaebi spirit wrestler for ssireum korean traditional wrestling, human-shaped, big sturdy heavy build, broad shoulders, thick legs, muted dusky indigo-violet skin, dim warm amber eyes, wild shaggy messy loose mane hair down, knee-length dark hanbok pants and a rolled-up short jacket open at the chest, a pale ochre satba cloth belt wrapped around the waist and one thigh, bare open hands, no weapon, standing tall with weight low, korean not japanese, NO sumo, NO mawashi, NO topknot, NO chonmage, NO samurai, NO kimono, NO horns, NO oni, no tiger stripes, tall lean proportions about 3.5 heads, NOT chibi, NOT 2-head SD, muted low-saturation palette, soft low-contrast shading, dark colored outline, small pixel art character, flat shading, no baked lighting, no glow",
+        "size": {
+          "width": 92,
+          "height": 92
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-08-06T16:00:40.791743+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-08-06T16:13:37.951426"
+}

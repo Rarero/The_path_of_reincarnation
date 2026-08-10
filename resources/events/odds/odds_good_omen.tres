@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventNodeConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_node_config.gd" id="1_cfg"]
+
+[resource]
+script = ExtResource("1_cfg")
+odds_tier = 0
+positive_chance = 0.7
+pick_weight = 1.0
+designer_note = "좋은 예감. 긍정 기대의 낮은 리스크 선택지. 표시값은 초안이며 M2 시드 시뮬레이션에서 조정한다"

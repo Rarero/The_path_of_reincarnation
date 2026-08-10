@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventNodeConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_node_config.gd" id="1_cfg"]
+
+[resource]
+script = ExtResource("1_cfg")
+odds_tier = 1
+positive_chance = 0.5
+pick_weight = 1.5
+designer_note = "반반. 표준 도박. 기본 등급이라 가중치를 조금 높게 둔다 (초안)"

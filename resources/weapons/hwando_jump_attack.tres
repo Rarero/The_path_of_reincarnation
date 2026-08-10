@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MeleeAttackDef" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/melee_attack_def.gd" id="1_def"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fx/fx_slash_air.png" id="2_fx"]
+
+[resource]
+script = ExtResource("1_def")
+damage = 15
+windup = 0.08
+active = 0.1
+recovery = 0.12
+combo_window = 0.0
+advance = 0.0
+knockback = false
+parry_window = true
+body_clip = &"air_attack"
+fx_texture = ExtResource("2_fx")
+fx_frames = 3
+fx_duration = 0.16

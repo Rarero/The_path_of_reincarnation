@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/stage_enemy_check.gd" id="1_check"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/levels/bg_act1.tscn" id="3_bg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1200, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(16, 400)
+
+[node name="StageEnemyCheck" type="Node2D"]
+script = ExtResource("1_check")
+
+[node name="BgAct1" parent="." instance=ExtResource("3_bg")]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="Ground"]
+position = Vector2(480, 360)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallLeft"]
+position = Vector2(-8, 160)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="WallRight" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Shape" type="CollisionShape2D" parent="WallRight"]
+position = Vector2(968, 160)
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(80, 336)
+
+[node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="Notice" type="Label" parent="Ui"]
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 472.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 8
+text = "적 확인 스테이지"

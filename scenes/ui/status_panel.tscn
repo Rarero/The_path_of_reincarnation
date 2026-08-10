@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/status_panel.gd" id="1_status"]
+
+[node name="StatusPanel" type="CanvasLayer"]
+process_mode = 3
+layer = 55
+script = ExtResource("1_status")
+
+[node name="Root" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Dim" type="ColorRect" parent="Root"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.78)
+
+[node name="TitleLabel" type="Label" parent="Root"]
+offset_right = 480.0
+offset_top = 8.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 16
+text = "상태"
+horizontal_alignment = 1
+
+[node name="LeftLabel" type="Label" parent="Root"]
+unique_name_in_owner = true
+offset_left = 20.0
+offset_top = 36.0
+offset_right = 234.0
+offset_bottom = 232.0
+theme_override_font_sizes/font_size = 10
+vertical_alignment = 0
+
+[node name="BoonIcons" type="HBoxContainer" parent="Root"]
+unique_name_in_owner = true
+offset_left = 246.0
+offset_top = 36.0
+offset_right = 460.0
+offset_bottom = 54.0
+theme_override_constants/separation = 4
+
+[node name="RightLabel" type="Label" parent="Root"]
+unique_name_in_owner = true
+offset_left = 246.0
+offset_top = 58.0
+offset_right = 462.0
+offset_bottom = 250.0
+theme_override_font_sizes/font_size = 9
+vertical_alignment = 0
+
+[node name="CoinLabel" type="Label" parent="Root"]
+unique_name_in_owner = true
+offset_left = 20.0
+offset_right = 234.0
+offset_top = 236.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="Root"]
+offset_right = 480.0
+offset_top = 252.0
+offset_bottom = 268.0
+theme_override_font_sizes/font_size = 9
+text = "I 또는 ESC로 닫기"
+horizontal_alignment = 1

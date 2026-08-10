@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_debt_paying_dokkaebi"
+display_name = "돈 갚는 도깨비"
+polarity = 0
+score = 20
+trigger = 0
+room_flavor = 0
+theme_tags = Array[StringName]([])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = false
+m2_priority = false
+act = 1
+implemented = false
+params = { "coin_per_tick": 3, "tick_sec": 4.0 }
+designer_note = "P4. 체류 시간당 엽전. 생기 몰림과 트레이드오프. 지급 주기와 양은 초안. EVENTS 4장 P4"

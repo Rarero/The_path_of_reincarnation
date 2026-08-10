@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites id="2026-07-29" name="report_1" tests="31" failures="0" skipped="0" flaky="0" time="0.000">
+	<testsuite id="0" name="test_environment" package="tests/unit" timestamp="2026-07-29T06:18:28" hostname="localhost" tests="3" failures="0" errors="0" skipped="0" flaky="0" time="0.015">
+		<testcase name="test_godot_version_matches_pinned" classname="test_environment" time="0.002">
+		</testcase>
+		<testcase name="test_project_name_is_hgp" classname="test_environment" time="0.002">
+		</testcase>
+		<testcase name="test_untyped_declaration_treated_as_error" classname="test_environment" time="0.003">
+		</testcase>
+	</testsuite>
+	<testsuite id="1" name="test_health" package="tests/unit" timestamp="2026-07-29T06:18:28" hostname="localhost" tests="7" failures="0" errors="0" skipped="0" flaky="0" time="0.090">
+		<testcase name="test_starts_full" classname="test_health" time="0.002">
+		</testcase>
+		<testcase name="test_damage_reduces_and_reports_dealt" classname="test_health" time="0.014">
+		</testcase>
+		<testcase name="test_damage_does_not_go_below_zero" classname="test_health" time="0.013">
+		</testcase>
+		<testcase name="test_invulnerable_blocks_damage" classname="test_health" time="0.013">
+		</testcase>
+		<testcase name="test_heal_caps_at_maximum" classname="test_health" time="0.013">
+		</testcase>
+		<testcase name="test_dead_target_ignores_further_input" classname="test_health" time="0.012">
+		</testcase>
+		<testcase name="test_refill_restores_maximum" classname="test_health" time="0.013">
+		</testcase>
+	</testsuite>
+	<testsuite id="2" name="test_stamina" package="tests/unit" timestamp="2026-07-29T06:18:28" hostname="localhost" tests="8" failures="0" errors="0" skipped="0" flaky="0" time="0.105">
+		<testcase name="test_starts_full" classname="test_stamina" time="0.002">
+		</testcase>
+		<testcase name="test_three_consecutive_rolls_are_allowed" classname="test_stamina" time="0.014">
+		</testcase>
+		<testcase name="test_fourth_roll_without_regen_fails" classname="test_stamina" time="0.013">
+		</testcase>
+		<testcase name="test_regen_waits_for_delay" classname="test_stamina" time="0.013">
+		</testcase>
+		<testcase name="test_regen_after_delay" classname="test_stamina" time="0.013">
+		</testcase>
+		<testcase name="test_regen_does_not_exceed_maximum" classname="test_stamina" time="0.013">
+		</testcase>
+		<testcase name="test_default_values_support_three_rolls" classname="test_stamina" time="0.013">
+		</testcase>
+		<testcase name="test_refill_clears_delay" classname="test_stamina" time="0.013">
+		</testcase>
+	</testsuite>
+	<testsuite id="3" name="test_rage_timer" package="tests/unit" timestamp="2026-07-29T06:18:28" hostname="localhost" tests="8" failures="0" errors="0" skipped="0" flaky="0" time="0.050">
+		<testcase name="test_inactive_before_threshold" classname="test_rage_timer" time="0.002">
+		</testcase>
+		<testcase name="test_activates_at_threshold" classname="test_rage_timer" time="0.002">
+		</testcase>
+		<testcase name="test_stage_increases_by_interval" classname="test_rage_timer" time="0.003">
+		</testcase>
+		<testcase name="test_enemy_scales_faster_than_player" classname="test_rage_timer" time="0.007">
+		</testcase>
+		<testcase name="test_multipliers_are_capped" classname="test_rage_timer" time="0.006">
+		</testcase>
+		<testcase name="test_reset_clears_state" classname="test_rage_timer" time="0.006">
+		</testcase>
+		<testcase name="test_time_to_trigger_counts_down_then_clamps" classname="test_rage_timer" time="0.006">
+		</testcase>
+		<testcase name="test_advance_reports_change_only_once_per_stage" classname="test_rage_timer" time="0.006">
+		</testcase>
+	</testsuite>
+	<testsuite id="4" name="test_jump_math" package="tests/unit" timestamp="2026-07-29T06:18:28" hostname="localhost" tests="5" failures="0" errors="0" skipped="0" flaky="0" time="0.027">
+		<testcase name="test_tiles_to_pixels" classname="test_jump_math" time="0.001">
+		</testcase>
+		<testcase name="test_jump_velocity_is_upward" classname="test_jump_math" time="0.002">
+		</testcase>
+		<testcase name="test_derived_values_reproduce_target_height" classname="test_jump_math" time="0.004">
+		</testcase>
+		<testcase name="test_shorter_descent_gives_stronger_gravity" classname="test_jump_math" time="0.007">
+		</testcase>
+		<testcase name="test_zero_time_is_guarded" classname="test_jump_math" time="0.007">
+		</testcase>
+	</testsuite>
+</testsuites>

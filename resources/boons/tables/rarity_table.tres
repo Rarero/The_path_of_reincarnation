@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RarityTable" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/rarity_table.gd" id="1_rarity"]
+
+[resource]
+script = ExtResource("1_rarity")
+multipliers = PackedFloat32Array(1, 1.5, 2)
+great_bonus = 0.25
+bonus_cap = 0.5
+total_cap = 2.5

@@ -1,0 +1,119 @@
+{
+  "group_id": "54c4aeca-f6c3-45f0-9cf3-b5041e74e13e",
+  "states": [
+    {
+      "character": {
+        "id": "06d81a93-88be-43a4-9a89-693667874155",
+        "name": "Idle",
+        "prompt": "modern korean young office worker dragged into the underworld at night, white dress shirt with sleeves rolled up, loose dark necktie, dark slacks and dress shoes, short black hair, tired startled face, an old hunting rifle slung casually over his shoulder on a strap, 3 head proportions with longer legs, small pixel art character, black outline, muted subdued colors",
+        "size": {
+          "width": 92,
+          "height": 92
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-08-02T14:58:09.865344+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {
+          "Taking_Punch": {
+            "east": [
+              "Idle/animations/Taking_Punch/east/frame_000.png",
+              "Idle/animations/Taking_Punch/east/frame_001.png",
+              "Idle/animations/Taking_Punch/east/frame_002.png",
+              "Idle/animations/Taking_Punch/east/frame_003.png",
+              "Idle/animations/Taking_Punch/east/frame_004.png",
+              "Idle/animations/Taking_Punch/east/frame_005.png"
+            ],
+            "south": [
+              "Idle/animations/Taking_Punch/south/frame_000.png",
+              "Idle/animations/Taking_Punch/south/frame_001.png",
+              "Idle/animations/Taking_Punch/south/frame_002.png",
+              "Idle/animations/Taking_Punch/south/frame_003.png",
+              "Idle/animations/Taking_Punch/south/frame_004.png",
+              "Idle/animations/Taking_Punch/south/frame_005.png"
+            ]
+          },
+          "Running": {
+            "south": [
+              "Idle/animations/Running/south/frame_000.png",
+              "Idle/animations/Running/south/frame_001.png",
+              "Idle/animations/Running/south/frame_002.png",
+              "Idle/animations/Running/south/frame_003.png",
+              "Idle/animations/Running/south/frame_004.png",
+              "Idle/animations/Running/south/frame_005.png",
+              "Idle/animations/Running/south/frame_006.png",
+              "Idle/animations/Running/south/frame_007.png"
+            ],
+            "east": [
+              "Idle/animations/Running/east/frame_000.png",
+              "Idle/animations/Running/east/frame_001.png",
+              "Idle/animations/Running/east/frame_002.png",
+              "Idle/animations/Running/east/frame_003.png",
+              "Idle/animations/Running/east/frame_004.png",
+              "Idle/animations/Running/east/frame_005.png",
+              "Idle/animations/Running/east/frame_006.png",
+              "Idle/animations/Running/east/frame_007.png"
+            ]
+          },
+          "Idle": {
+            "east": [
+              "Idle/animations/Idle/east/frame_000.png",
+              "Idle/animations/Idle/east/frame_001.png",
+              "Idle/animations/Idle/east/frame_002.png",
+              "Idle/animations/Idle/east/frame_003.png",
+              "Idle/animations/Idle/east/frame_004.png",
+              "Idle/animations/Idle/east/frame_005.png",
+              "Idle/animations/Idle/east/frame_006.png",
+              "Idle/animations/Idle/east/frame_007.png"
+            ],
+            "south": [
+              "Idle/animations/Idle/south/frame_000.png",
+              "Idle/animations/Idle/south/frame_001.png",
+              "Idle/animations/Idle/south/frame_002.png",
+              "Idle/animations/Idle/south/frame_003.png",
+              "Idle/animations/Idle/south/frame_004.png",
+              "Idle/animations/Idle/south/frame_005.png",
+              "Idle/animations/Idle/south/frame_006.png",
+              "Idle/animations/Idle/south/frame_007.png"
+            ]
+          },
+          "raising_the_rifle_to_shoulder_and_firing_forward_w": {
+            "south": [
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/south/frame_000.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/south/frame_001.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/south/frame_002.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/south/frame_003.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/south/frame_004.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/south/frame_005.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/south/frame_006.png"
+            ],
+            "east": [
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/east/frame_000.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/east/frame_001.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/east/frame_002.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/east/frame_003.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/east/frame_004.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/east/frame_005.png",
+              "Idle/animations/raising_the_rifle_to_shoulder_and_firing_forward_w/east/frame_006.png"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-08-03T02:29:24.257026"
+}

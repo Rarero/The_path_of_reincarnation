@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="BoonDef" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/boon_def.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/data/boon_effect.gd" id="2_eff"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/boons/boon_jowang_bujikkaengi.png" id="9_icon"]
+
+[sub_resource type="Resource" id="stat_0"]
+script = ExtResource("2_eff")
+hook = 0
+target_key = &"max_ammo"
+base_value = 6.0
+is_multiplier = false
+rarity_scales = true
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="special_0"]
+script = ExtResource("2_eff")
+hook = 14
+target_key = &"bujikkaengi_throw"
+base_value = 1.0
+is_multiplier = false
+rarity_scales = false
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 3.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[resource]
+script = ExtResource("1_def")
+icon = ExtResource("9_icon")
+id = &"boon_jowang_bujikkaengi"
+display_name = "부지깽이"
+pantheon = 1
+layer = 0
+sub_pantheon = -1
+weapon_tag = 1
+weapon_tag_inherits = false
+kind = 1
+tier = 1
+act_pool = Array[int]([1, 2, 3])
+implemented = true
+m2_priority = true
+description = "일정 시간마다 포물선으로 불꽃을 던진다. 내 공격과 별개로 나가며 맞은 적에게 화상 1스택이 붙는다. 최대 탄약이 소폭 오른다."
+designer_note = "조왕 1티어 패시브(자동 공격) (docs/systems/BOONS.md 8.3). 새 공격 수단 금지의 명시 예외다(4장, grants_new_attack). 투척은 조작과 무관한 주기 발동이라 규칙 46(공격 속도 비례 금지)에 걸리지 않는다. 투척 주기와 낙하 궤적 실제 구현은 Godot 후속."
+stat_effects = Array[BoonEffect]([SubResource("stat_0")])
+special_effects = Array[BoonEffect]([SubResource("special_0")])
+special_mark = Array[BoonEffect]([])
+fusion_tags = Array[StringName]([&"beonjim", &"ssogi"])
+fusion_accepts = Array[StringName]([&"chigi", &"norim"])
+fusion_deny_ids = Array[StringName]([])
+activation = 0
+active_cooldown_sec = 0.0
+cooldown_growth_sec = 0.0
+grants_new_attack = true

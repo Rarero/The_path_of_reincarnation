@@ -1,0 +1,36 @@
+{
+  "group_id": "8bdc0eca-0032-4725-ae3c-f92a9d5908b2",
+  "states": [
+    {
+      "character": {
+        "id": "259b083d-930d-4f1e-91c8-171167a468e7",
+        "name": "Idle",
+        "prompt": "korean dokkaebi spirit born from an old wooden pestle, single wooden peg leg one-legged body, lower body still a worn wooden pestle with cracks, wild shaggy mane-like dark hair, huge round glowing warm orange eyes wide open, big open mischievous grinning mouth, small bamboo hat paeraengi on head, ragged dark bluish-purple hanbok vest, dusky indigo-violet skin, chibi proportions, small pixel art character, black outline, muted subdued colors, NO horns, NO oni, NO goblin",
+        "size": {
+          "width": 60,
+          "height": 60
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-08-01T13:55:46.740930+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-08-01T14:00:53.985186"
+}

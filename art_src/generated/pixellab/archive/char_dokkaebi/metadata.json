@@ -1,0 +1,36 @@
+{
+  "group_id": "f191001b-ebb0-41b5-b955-7aff7c23e108",
+  "states": [
+    {
+      "character": {
+        "id": "28c24a9a-6263-4680-9621-5e91ac909b8f",
+        "name": "Idle",
+        "prompt": "small human-shaped korean dokkaebi spirit, shaggy messy dark hair, ragged short korean hanbok in dark bluish-purple night tones, skin tinted dusky indigo-violet, small glowing warm orange eyes, dim-witted mischievous face, holding an old wooden pestle like a club raised over shoulder, chibi proportions, small pixel art character, black outline, muted subdued colors, NO horns, NO oni, NO goblin",
+        "size": {
+          "width": 60,
+          "height": 60
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-07-30T14:20:26.667357+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-07-30T14:35:05.773391"
+}

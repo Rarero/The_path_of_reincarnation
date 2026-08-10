@@ -1,0 +1,36 @@
+{
+  "group_id": "1c8c1082-dac9-47af-aa55-d9ab176c666d",
+  "states": [
+    {
+      "character": {
+        "id": "5a9a7868-e9b0-451e-9847-e6197b4ff64b",
+        "name": "Idle",
+        "prompt": "korean jeoseung-saja, underworld reaper official, wide-brimmed black gat korean traditional horsehair hat, long black durumagi robe, pale gray tired face, half-lidded weary eyes, holding a rolled white paper scroll in one hand, overworked bureaucrat, tall lean proportions about 4 heads, NOT chibi, muted low-saturation palette, soft low-contrast shading, dark colored outline, pale desaturated skin, calm restrained expression, flat shading, no glow, korean not japanese, NO kimono, NO samurai, NO chonmage",
+        "size": {
+          "width": 176,
+          "height": 176
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-08-04T13:03:56.156253+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-08-04T13:17:12.991262"
+}

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_ssireum_challenge"
+display_name = "도깨비 씨름 도전"
+polarity = 1
+score = -10
+trigger = 0
+room_flavor = 0
+theme_tags = Array[StringName]([&"street"])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = false
+m2_priority = true
+act = 1
+implemented = true
+params = { "min_coins_trigger": 0 }
+designer_note = "N5. 2026-08-06 재설계. 방에 들어서면 곧바로 씨름판으로 불려 올라가는 자동 발동 연타 대결이다. 옛 조건부 접근 발동과 왼다리 약점 공략은 폐기했다. 상대는 시드로 뽑고 낮은 확률로 큰 도깨비가 나온다. 사망 벌칙 없이 체력만 잃는다 (KO 넉백). resources/minigames/ssireum/"

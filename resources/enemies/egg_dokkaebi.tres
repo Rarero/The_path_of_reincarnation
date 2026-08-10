@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_stats.gd" id="1_stats"]
+[ext_resource type="Resource" path="res://resources/enemies/patterns/egg_roll.tres" id="2_p0"]
+
+[resource]
+script = ExtResource("1_stats")
+display_name = "달걀도깨비"
+max_health = 18
+move_speed = 34.0
+contact_damage = 10
+attack_damage = 0
+detect_range = 150.0
+attack_range = 190.0
+attack_cooldown = 1.2
+hitstun = 0.16
+stagger_level = 0
+coin_reward = 2
+threat_pt = 0.5
+attack_patterns = Array[Resource]([ExtResource("2_p0")])

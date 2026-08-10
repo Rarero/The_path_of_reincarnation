@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_blacksmith_rescue"
+display_name = "대장장이 구출"
+polarity = 0
+score = 30
+trigger = 3
+room_flavor = 0
+theme_tags = Array[StringName]([])
+prerequisites = Array[StringName]([&"blacksmith_locked"])
+run_once = true
+big_value = true
+m2_priority = true
+act = 1
+implemented = false
+params = {}
+designer_note = "P1. 전투 클리어가 서사 해금 조건. 성사 시 blacksmith_locked 해제 후 풀에서 제거. 큰 값(30)이라 막당 한도 대상. 강화 수치는 밸런싱에서 확정. EVENTS 4장 P1"

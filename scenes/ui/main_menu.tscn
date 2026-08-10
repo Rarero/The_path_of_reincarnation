@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://b6t7iemrunlk3"]
+
+[ext_resource type="Script" uid="uid://p8qfdkvffa4o" path="res://scenes/ui/main_menu.gd" id="1_menu"]
+[ext_resource type="PackedScene" path="res://scenes/ui/settings_menu.tscn" id="2_settings"]
+[ext_resource type="Texture2D" uid="uid://bqyfrx8s408ia" path="res://assets/sprites/ui/title_bg.png" id="3_titlebg"]
+
+[node name="MainMenu" type="Control" unique_id=1992046933]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1101969110]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.14, 0.13, 0.17, 1)
+
+[node name="TitleBg" type="TextureRect" parent="." unique_id=1830720928]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("3_titlebg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1428847398]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 24.0
+offset_right = 360.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 24
+text = "환생길"
+
+[node name="SubtitleLabel" type="Label" parent="." unique_id=865331633]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 66.0
+offset_right = 420.0
+offset_bottom = 84.0
+theme_override_font_sizes/font_size = 11
+text = "가제. 저승 초입에서"
+
+[node name="ContinueButton" type="Button" parent="." unique_id=249767475]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 18.0
+offset_top = 124.0
+offset_right = 150.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 14
+text = "이어하기"
+
+[node name="StartButton" type="Button" parent="." unique_id=842575733]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 18.0
+offset_top = 152.0
+offset_right = 150.0
+offset_bottom = 176.0
+theme_override_font_sizes/font_size = 14
+text = "게임 시작"
+
+[node name="RestartButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 18.0
+offset_top = 180.0
+offset_right = 150.0
+offset_bottom = 204.0
+theme_override_font_sizes/font_size = 14
+text = "처음부터"
+
+[node name="SettingsButton" type="Button" parent="." unique_id=285305330]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 18.0
+offset_top = 208.0
+offset_right = 150.0
+offset_bottom = 232.0
+theme_override_font_sizes/font_size = 14
+text = "설정"
+
+[node name="QuitButton" type="Button" parent="." unique_id=2053692022]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 18.0
+offset_top = 236.0
+offset_right = 150.0
+offset_bottom = 260.0
+theme_override_font_sizes/font_size = 14
+text = "종료"
+
+[node name="SettingsPanel" parent="." unique_id=1211188054 instance=ExtResource("2_settings")]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+
+[node name="RestartConfirm" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+title = "처음부터"
+size = Vector2i(260, 104)
+visible = false
+ok_button_text = "지우고 시작"
+dialog_text = "진행 상태와 중단 저장을 모두 지운다. 오프닝부터 다시 시작한다."
+cancel_button_text = "취소"

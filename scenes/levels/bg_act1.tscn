@@ -1,0 +1,226 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/bg_act1.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bg/act1/bg_sky_band.png" id="2_sky"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bg/act1/bg_moon.png" id="3_moon"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bg/act1/bg_skyline_band.png" id="4_skyline"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bg/act1/bg_lantern_band.png" id="5_lantern"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fx/glow_radial_64.png" id="6_glow"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bg/act1/bg_street_band_far.png" id="7_street_far"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bg/act1/bg_street_band.png" id="8_street"]
+[ext_resource type="Script" path="res://scripts/bg/lantern_light.gd" id="9_lantern_light"]
+
+[node name="BgAct1" type="ParallaxBackground"]
+script = ExtResource("1_script")
+
+[node name="L0Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.05, 1)
+motion_mirroring = Vector2(512, 0)
+
+[node name="SkyFillTop" type="ColorRect" parent="L0Sky"]
+offset_top = -80.0
+offset_right = 512.0
+offset_bottom = 222.0
+color = Color(0.043, 0.043, 0.212, 1)
+
+[node name="Stars" type="Node2D" parent="L0Sky"]
+
+[node name="Clouds" type="Node2D" parent="L0Sky"]
+
+[node name="SkyBand1" type="Sprite2D" parent="L0Sky"]
+position = Vector2(0, 217)
+centered = false
+texture = ExtResource("2_sky")
+
+[node name="SkyBand2" type="Sprite2D" parent="L0Sky"]
+position = Vector2(256, 217)
+centered = false
+texture = ExtResource("2_sky")
+
+[node name="Moon" type="Sprite2D" parent="L0Sky"]
+position = Vector2(240, 132)
+texture = ExtResource("3_moon")
+
+[node name="MoonHalo" type="PointLight2D" parent="L0Sky"]
+position = Vector2(240, 132)
+color = Color(0.941, 0.941, 0.863, 1)
+energy = 0.3
+range_layer_min = -256
+range_layer_max = 256
+texture = ExtResource("6_glow")
+texture_scale = 1.5
+
+[node name="L0Ridge" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.12, 1)
+motion_mirroring = Vector2(512, 0)
+
+[node name="Ridges" type="Node2D" parent="L0Ridge"]
+
+[node name="L1Skyline" type="ParallaxLayer" parent="."]
+modulate = Color(0.4, 0.36, 0.48, 1)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(512, 0)
+
+[node name="HorizonFill" type="ColorRect" parent="L1Skyline"]
+offset_top = 292.0
+offset_right = 512.0
+offset_bottom = 420.0
+color = Color(0.106, 0.098, 0.176, 1)
+
+[node name="Skyline1" type="Sprite2D" parent="L1Skyline"]
+position = Vector2(0, 246)
+centered = false
+texture = ExtResource("4_skyline")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 46)
+
+[node name="Skyline2" type="Sprite2D" parent="L1Skyline"]
+position = Vector2(256, 246)
+centered = false
+texture = ExtResource("4_skyline")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 46)
+
+[node name="L1Lantern" type="ParallaxLayer" parent="."]
+modulate = Color(1.1, 1, 0.88, 1)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(512, 0)
+
+[node name="LanternBand" type="Sprite2D" parent="L1Lantern"]
+position = Vector2(0, 170)
+centered = false
+texture = ExtResource("5_lantern")
+
+[node name="LanternGlow1" type="PointLight2D" parent="L1Lantern"]
+position = Vector2(36, 200)
+color = Color(1, 0.745, 0.431, 1)
+energy = 0.65
+range_layer_min = -256
+range_layer_max = 256
+texture = ExtResource("6_glow")
+texture_scale = 1.4
+script = ExtResource("9_lantern_light")
+
+[node name="LanternGlow2" type="PointLight2D" parent="L1Lantern"]
+position = Vector2(115, 191)
+color = Color(1, 0.745, 0.431, 1)
+energy = 0.65
+range_layer_min = -256
+range_layer_max = 256
+texture = ExtResource("6_glow")
+texture_scale = 1.4
+script = ExtResource("9_lantern_light")
+
+[node name="LanternGlow3" type="PointLight2D" parent="L1Lantern"]
+position = Vector2(166, 204)
+color = Color(1, 0.745, 0.431, 1)
+energy = 0.65
+range_layer_min = -256
+range_layer_max = 256
+texture = ExtResource("6_glow")
+texture_scale = 1.4
+script = ExtResource("9_lantern_light")
+
+[node name="LanternGlow4" type="PointLight2D" parent="L1Lantern"]
+position = Vector2(253, 197)
+color = Color(1, 0.745, 0.431, 1)
+energy = 0.65
+range_layer_min = -256
+range_layer_max = 256
+texture = ExtResource("6_glow")
+texture_scale = 1.4
+script = ExtResource("9_lantern_light")
+
+[node name="LanternGlow5" type="PointLight2D" parent="L1Lantern"]
+position = Vector2(315, 195)
+color = Color(1, 0.745, 0.431, 1)
+energy = 0.65
+range_layer_min = -256
+range_layer_max = 256
+texture = ExtResource("6_glow")
+texture_scale = 1.4
+script = ExtResource("9_lantern_light")
+
+[node name="LanternGlow6" type="PointLight2D" parent="L1Lantern"]
+position = Vector2(359, 204)
+color = Color(1, 0.745, 0.431, 1)
+energy = 0.65
+range_layer_min = -256
+range_layer_max = 256
+texture = ExtResource("6_glow")
+texture_scale = 1.4
+script = ExtResource("9_lantern_light")
+
+[node name="LanternGlow7" type="PointLight2D" parent="L1Lantern"]
+position = Vector2(417, 203)
+color = Color(1, 0.745, 0.431, 1)
+energy = 0.65
+range_layer_min = -256
+range_layer_max = 256
+texture = ExtResource("6_glow")
+texture_scale = 1.4
+script = ExtResource("9_lantern_light")
+
+[node name="LanternGlow8" type="PointLight2D" parent="L1Lantern"]
+position = Vector2(487, 192)
+color = Color(1, 0.745, 0.431, 1)
+energy = 0.65
+range_layer_min = -256
+range_layer_max = 256
+texture = ExtResource("6_glow")
+texture_scale = 1.4
+script = ExtResource("9_lantern_light")
+
+[node name="LanternGlow9" type="PointLight2D" parent="L1Lantern"]
+position = Vector2(548, 200)
+color = Color(1, 0.745, 0.431, 1)
+energy = 0.65
+range_layer_min = -256
+range_layer_max = 256
+texture = ExtResource("6_glow")
+texture_scale = 1.4
+script = ExtResource("9_lantern_light")
+
+[node name="LanternGlow10" type="PointLight2D" parent="L1Lantern"]
+position = Vector2(627, 191)
+color = Color(1, 0.745, 0.431, 1)
+energy = 0.65
+range_layer_min = -256
+range_layer_max = 256
+texture = ExtResource("6_glow")
+texture_scale = 1.4
+script = ExtResource("9_lantern_light")
+
+[node name="L2Mid" type="ParallaxLayer" parent="."]
+modulate = Color(0.62, 0.53, 0.47, 1)
+motion_scale = Vector2(0.55, 1)
+motion_mirroring = Vector2(1024, 0)
+
+[node name="StreetFar1" type="Sprite2D" parent="L2Mid"]
+position = Vector2(0, 302)
+centered = false
+texture = ExtResource("7_street_far")
+
+[node name="StreetFar2" type="Sprite2D" parent="L2Mid"]
+position = Vector2(512, 302)
+centered = false
+texture = ExtResource("7_street_far")
+
+[node name="Gen" type="Node2D" parent="L2Mid"]
+
+[node name="L3Near" type="ParallaxLayer" parent="."]
+modulate = Color(0.8, 0.71, 0.6, 1)
+motion_scale = Vector2(0.85, 1)
+motion_mirroring = Vector2(1024, 0)
+
+[node name="StreetBand1" type="Sprite2D" parent="L3Near"]
+position = Vector2(0, 316)
+centered = false
+texture = ExtResource("8_street")
+
+[node name="StreetBand2" type="Sprite2D" parent="L3Near"]
+position = Vector2(512, 316)
+centered = false
+texture = ExtResource("8_street")
+
+[node name="Gen" type="Node2D" parent="L3Near"]

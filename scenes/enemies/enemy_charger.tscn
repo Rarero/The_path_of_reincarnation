@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_charger.gd" id="1_charger"]
+[ext_resource type="SpriteFrames" path="res://scenes/enemies/dokkaebi_frames.tres" id="6_frames"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="2_health"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="3_hurtbox"]
+[ext_resource type="Script" path="res://scripts/components/hitbox.gd" id="4_hitbox"]
+[ext_resource type="Resource" path="res://resources/enemies/goblin_charger.tres" id="5_stats"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(20, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(22, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_contact"]
+size = Vector2(24, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_attack"]
+resource_local_to_scene = true
+size = Vector2(26, 24)
+
+[node name="EnemyCharger" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 257
+floor_snap_length = 6.0
+script = ExtResource("1_charger")
+stats = ExtResource("5_stats")
+
+[node name="BodyVisual" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -19)
+sprite_frames = ExtResource("6_frames")
+animation = &"idle"
+autoplay = "idle"
+flip_h = true
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_health")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hurtbox")
+
+[node name="Shape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_hurt")
+
+[node name="ContactHitbox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+monitoring = false
+script = ExtResource("4_hitbox")
+active_duration = 0.0
+
+[node name="Shape" type="CollisionShape2D" parent="ContactHitbox"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_contact")
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+position = Vector2(17, -15)
+collision_layer = 64
+collision_mask = 8
+monitoring = false
+script = ExtResource("4_hitbox")
+active_duration = 0.08
+
+[node name="Shape" type="CollisionShape2D" parent="AttackHitbox"]
+shape = SubResource("RectangleShape2D_attack")
+
+[node name="FloorProbe" type="RayCast2D" parent="."]
+position = Vector2(13, -6)
+target_position = Vector2(0, 14)
+collision_mask = 257
+
+[node name="TelegraphSound" type="AudioStreamPlayer2D" parent="."]

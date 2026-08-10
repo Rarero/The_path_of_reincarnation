@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/mark_alert.png" id="1_mark"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mark0"]
+atlas = ExtResource("1_mark")
+region = Rect2(0, 0, 9, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mark1"]
+atlas = ExtResource("1_mark")
+region = Rect2(9, 0, 9, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mark2"]
+atlas = ExtResource("1_mark")
+region = Rect2(18, 0, 9, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mark3"]
+atlas = ExtResource("1_mark")
+region = Rect2(27, 0, 9, 18)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mark0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mark1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mark2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mark3")
+}],
+"loop": true,
+"name": &"bob",
+"speed": 4.0
+}]

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SsireumOpponent" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ssireum_opponent.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+weight = 45.0
+id = &"ssireum_stout"
+display_name = "억센 장정"
+true_form = "헌 절굿공이"
+frames_path = "res://scenes/enemies/wrestler_frames.tres"
+placeholder_art = false
+push_speed = 0.26
+mash_per_prompt = 14
+gain_per_hit = 0.060
+miss_penalty = 0.05
+is_big = false
+win_coins = 36
+lose_damage = 12
+win_relic_chance = 0.15
+designer_note = "조형은 씨름꾼(ENEMIES 5.4)이다. 요청서 023으로 생성해 wrestler_frames.tres에 연결했다. 표준 상대. 초당 6회면 약 10초, 7회면 약 6초에 이긴다. 초당 4회는 판정패이고 3회 이하면 진다 (2026-08-06 2차 재조정). 손을 늦추면 그대로 밀린다"

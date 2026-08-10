@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_stats.gd" id="1_stats"]
+[ext_resource type="Resource" path="res://resources/enemies/patterns/fence_snatch.tres" id="2_p0"]
+
+[resource]
+script = ExtResource("1_stats")
+display_name = "장물아비"
+max_health = 24
+move_speed = 110.0
+contact_damage = 5
+attack_damage = 10
+detect_range = 280.0
+attack_range = 26.0
+attack_cooldown = 1.1
+hitstun = 0.16
+stagger_level = 0
+coin_reward = 5
+threat_pt = 2.0
+attack_patterns = Array[Resource]([ExtResource("2_p0")])

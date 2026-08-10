@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hgp 프론트엔드 구도 시안: 타이틀, 오프닝, 허브</title>
+<style>
+  :root{
+    --deep:#191b30; --far:#23263f; --mid:#2e3150; --struct:#3c3f5c; --struct2:#565a76;
+    --floor:#3a332c; --floor2:#2b2620; --amber:#e0a94a; --amberc:#f2c87f;
+    --soul:#aeb8c4; --ink:#14141c; --paper:#c8b98a; --ui:#e8e4d8;
+    --panel:#16182a; --line:#3a3d55; --night:#12142a; --street:#20233c;
+    --white:#f4f2ea; --skin:#d8b48c; --shirt:#e9e6dc; --tie:#8a3b3b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:28px 24px 60px;background:#0c0d15;color:var(--ui);
+    font-family:"Helvetica Neue",Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.55}
+  .wrap{max-width:1120px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px;letter-spacing:.3px}
+  h2{font-size:18px;margin:38px 0 6px;padding-top:16px;border-top:1px solid var(--line)}
+  h3{font-size:15px;margin:14px 0 6px;color:var(--amberc)}
+  p,li{font-size:13.5px;color:#d3d1c6}
+  .lede{color:#a9a89e;font-size:13px;max-width:820px}
+  .meta{font-size:12px;color:#8b8a82;margin:2px 0}
+  a{color:#9fc0e8}
+  .row{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;margin-top:12px}
+  .frame{background:#000;border:1px solid #000;border-radius:3px;
+    box-shadow:0 0 0 1px #2a2c40,0 10px 26px rgba(0,0,0,.55);flex:0 0 auto}
+  .frame svg{display:block}
+  .notes{flex:1 1 300px;min-width:280px}
+  .notes ul{margin:6px 0 0;padding-left:18px}
+  .notes li{margin:3px 0}
+  .k{color:#efe9d6;font-weight:600}
+  .sw{display:inline-flex;align-items:center;gap:6px;margin:4px 10px 4px 0;font-size:12px;color:#c7c5ba}
+  .sw i{width:16px;height:16px;border-radius:3px;display:inline-block;border:1px solid rgba(255,255,255,.15)}
+  .palette{margin:10px 0 4px}
+  .badge{display:inline-block;font-size:11px;padding:1px 7px;border-radius:10px;border:1px solid var(--line);color:#b9b8ae;margin-right:6px}
+  .flag{border:1px solid #6a5324;background:#211a0e;border-radius:6px;padding:12px 14px;margin:14px 0}
+  .flag h3{color:var(--amberc);margin-top:0}
+  .flag.info{border-color:#2f4a63;background:#0f1826}
+  .flag.info h3{color:#9fc0e8}
+  .pages{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:12px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 12px 14px}
+  .card .pnum{font-size:12px;color:#8b8a82}
+  .card h4{margin:2px 0 8px;font-size:14px}
+  .panels{display:flex;gap:6px}
+  .panels .frame{flex:1 1 0;box-shadow:0 0 0 1px #2a2c40}
+  .cap{font-size:12.5px;color:#cfcdc2;margin:9px 0 2px}
+  .cap .lab{color:#8b8a82}
+  .dlg{font-size:12.5px;color:#e4dcc6;margin:2px 0}
+  .dlg .who{color:var(--amberc)}
+  .sfx{font-size:12.5px;color:#e88;letter-spacing:1px}
+  .foot{margin-top:14px;font-size:12px;color:#8b8a82}
+  code{background:#1c1e2e;padding:1px 5px;border-radius:4px;font-size:12px;color:#cbd6e6}
+  .legend{font-size:12px;color:#9a998f;margin:8px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>hgp 프론트엔드 구도 시안 (프리비주얼)</h1>
+  <p class="meta">대상: 타이틀 화면, 오프닝 7페이지 컷툰, 시작 허브(저승 초입 접수청)</p>
+  <p class="meta">근거: docs/DESIGN_INTRO.md, docs/DESIGN_HUB.md, docs/ART_STYLE.md, docs/GDD.md 2장, 요청서 013 014 015 016</p>
+  <p class="lede">이 문서는 픽셀 에셋 생성 전 화면 구도를 확정하기 위한 시안이다. 실제 아트가 아니라 요소 배치, 레이어 위계, 카메라, 팔레트 방향을 잡는 용도다. 색 블록은 최종 색이 아니라 명도 위계를 나타낸다. 배경은 무외곽선 저채도 면, 캐릭터와 상호작용 오브젝트는 검정 아웃라인과 높은 대비로 분리한다. 등불 글로우와 달무리는 에셋에 굽지 않고 엔진 라이팅이 담당한다(ART_STYLE 6장). 기준 논리 해상도 320x180, 측면 입면 고정, 원근과 소실점 금지.</p>
+
+  <div class="palette">
+    <span class="k" style="font-size:12px">접수청 서브 팔레트 방향(잠정, 시장 난색과 구분되는 침침한 중채도):</span><br>
+    <span class="sw"><i style="background:#191b30"></i>침전 남색 deep</span>
+    <span class="sw"><i style="background:#23263f"></i>원경 실루엣 far</span>
+    <span class="sw"><i style="background:#2e3150"></i>중경 구조 mid</span>
+    <span class="sw"><i style="background:#3c3f5c"></i>창구 struct</span>
+    <span class="sw"><i style="background:#565a76"></i>밝은 재빛 struct2</span>
+    <span class="sw"><i style="background:#3a332c"></i>마룻바닥 floor</span>
+    <span class="sw"><i style="background:#e0a94a"></i>등불 호박 amber(포인트)</span>
+    <span class="sw"><i style="background:#aeb8c4"></i>떠도는 혼 soul</span>
+    <span class="sw"><i style="background:#c8b98a"></i>낡은 종이 paper</span>
+  </div>
+  <p class="legend">주의: 청록은 1막 도깨비불 신호, 적색은 생기 몰림 신호로 예약되어 접수청 배경 장식에 쓰지 않는다(ART_STYLE 3장). 실제 색값은 M2 S0 선별에서 확정한다.</p>
+
+  <!-- ============================ TITLE ============================ -->
+  <h2>1. 타이틀 화면</h2>
+  <p class="meta">근거: DESIGN_INTRO 3장, 요청서 013. 기준 320x180. 좌측은 UI 오버레이 영역이라 배경을 비교적 비운다.</p>
+  <div class="row">
+    <div class="frame">
+      <svg width="672" height="378" viewBox="0 0 320 180" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#141633"/><stop offset="1" stop-color="#2a2c49"/>
+          </linearGradient>
+          <radialGradient id="horizon" cx="0.8" cy="0.85" r="0.6">
+            <stop offset="0" stop-color="#5a4526"/><stop offset="1" stop-color="#2a2c49" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="lglow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#e0a94a" stop-opacity="0.55"/><stop offset="1" stop-color="#e0a94a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- L0 sky -->
+        <rect x="0" y="0" width="320" height="152" fill="url(#sky)"/>
+        <rect x="0" y="60" width="320" height="92" fill="url(#horizon)"/>
+        <!-- moon low (밤에서 황혼, 달 기움 복선) -->
+        <circle cx="42" cy="34" r="11" fill="#c9ccdb" opacity="0.5"/>
+
+        <!-- L1 distant palace silhouette (염라대전), upper-right on a rise -->
+        <path d="M300 152 L300 92 L286 92 L286 84 L272 84 L272 74 L262 66 L252 74 L252 84 L238 84 L238 96 L224 96 L224 152 Z" fill="#20233c"/>
+        <rect x="248" y="60" width="4" height="8" fill="#20233c"/>
+        <!-- upward path ribbon -->
+        <path d="M176 152 L206 150 L214 126 L236 120 L242 100 L232 98 L228 118 L206 124 L198 148 L176 150 Z" fill="#343150"/>
+        <path d="M206 150 L214 126 L236 120" fill="none" stroke="#4a4327" stroke-width="1" opacity="0.7"/>
+
+        <!-- L2 reception office rooflines (center-right) -->
+        <g>
+          <polygon points="96,116 150,116 142,104 104,104" fill="#2b2e4c"/>
+          <rect x="98" y="116" width="50" height="30" fill="#262a45"/>
+          <polygon points="150,120 204,120 196,106 158,106" fill="#303352" opacity="0.19"/>
+          <polygon points="150,120 204,120 197,108 157,108" fill="#2e3150"/>
+          <rect x="152" y="120" width="52" height="26" fill="#282c48"/>
+          <!-- paper windows faint amber -->
+          <rect x="106" y="122" width="9" height="12" fill="#8a6a34"/>
+          <rect x="120" y="122" width="9" height="12" fill="#9a7638"/>
+          <rect x="160" y="124" width="9" height="10" fill="#7d6132"/>
+          <rect x="176" y="124" width="9" height="10" fill="#8a6a34"/>
+        </g>
+
+        <!-- L2b storage annex far-left (dim, kept calm) -->
+        <rect x="0" y="108" width="66" height="44" fill="#1e2038"/>
+        <line x1="6" y1="120" x2="60" y2="120" stroke="#2a2c46" stroke-width="2"/>
+        <line x1="6" y1="132" x2="60" y2="132" stroke="#2a2c46" stroke-width="2"/>
+        <rect x="10" y="122" width="10" height="8" fill="#2f3252"/>
+        <rect x="30" y="122" width="12" height="8" fill="#2f3252"/>
+        <rect x="44" y="134" width="10" height="8" fill="#2f3252"/>
+
+        <!-- lanterns glow (engine will light; previz hint) -->
+        <circle cx="146" cy="120" r="12" fill="url(#lglow)"/>
+        <circle cx="146" cy="120" r="2.4" fill="#f2c87f"/>
+        <circle cx="206" cy="126" r="10" fill="url(#lglow)"/>
+        <circle cx="206" cy="126" r="2" fill="#f2c87f"/>
+
+        <!-- L3 floor -->
+        <rect x="0" y="146" width="320" height="34" fill="#332d26"/>
+        <rect x="0" y="146" width="320" height="4" fill="#3f3830"/>
+        <!-- faint wandering souls queued -->
+        <ellipse cx="120" cy="150" rx="4" ry="7" fill="#aeb8c4" opacity="0.35"/>
+        <ellipse cx="132" cy="151" rx="4" ry="7" fill="#aeb8c4" opacity="0.28"/>
+        <ellipse cx="150" cy="150" rx="4" ry="7" fill="#aeb8c4" opacity="0.3"/>
+
+        <!-- ===== UI overlay ===== -->
+        <!-- logo plate top-left -->
+        <rect x="8" y="10" width="150" height="40" rx="3" fill="#0d0f1c" opacity="0.62"/>
+        <text x="16" y="32" font-family="sans-serif" font-size="18" fill="#f2e9d2" font-weight="700">환생길</text>
+        <text x="92" y="31" font-family="sans-serif" font-size="9" fill="#9a998f">가제</text>
+        <text x="16" y="44" font-family="sans-serif" font-size="7.5" fill="#8b8a82">타이틀 로고 자리(확정 후 교체)</text>
+
+        <!-- menu bottom-left vertical -->
+        <g font-family="sans-serif" font-size="10">
+          <rect x="8" y="118" width="104" height="16" rx="2" fill="#e0a94a"/>
+          <rect x="8" y="118" width="104" height="16" rx="2" fill="none" stroke="#f4e3bd" stroke-width="1"/>
+          <text x="16" y="129.5" fill="#20180a" font-weight="700">게임 시작</text>
+          <rect x="8" y="138" width="96" height="15" rx="2" fill="#1a1c30" opacity="0.7"/>
+          <text x="16" y="149" fill="#d9d6cb">설정</text>
+          <rect x="8" y="157" width="96" height="15" rx="2" fill="#1a1c30" opacity="0.7"/>
+          <text x="16" y="168" fill="#d9d6cb">종료</text>
+          <text x="118" y="129.5" fill="#f2c87f" font-size="8">진입 포커스</text>
+        </g>
+
+        <!-- safe margin guides -->
+        <line x1="8" y1="2" x2="8" y2="178" stroke="#4a5b78" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.7"/>
+        <line x1="2" y1="172" x2="318" y2="172" stroke="#4a5b78" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.7"/>
+        <text x="250" y="170" font-family="sans-serif" font-size="6.5" fill="#7f8ba3">안전 여백 8px</text>
+      </svg>
+    </div>
+    <div class="notes">
+      <h3>구도 의도</h3>
+      <ul>
+        <li><span class="k">시선 유도</span>: 좌하단 메뉴에서 시작해 중앙 접수청, 우상단 상행 길과 먼 염라대전 실루엣으로 흐른다. 게임의 최종 목표(위로, 염라대전)를 첫 화면에 심는다.</li>
+        <li><span class="k">좌측 비움</span>: 로고(좌상단)와 메뉴(좌하단)가 얹히므로 좌측 3분의 1은 어둡고 정적인 특수창고로만 채운다.</li>
+        <li><span class="k">레이어</span>: L0 황혼 하늘과 기운 달, L1 원경 염라대전 실루엣과 상행 길, L2 접수청 지붕과 창구, L3 마룻바닥과 떠도는 혼.</li>
+        <li><span class="k">등불</span>: 호박색 포인트만 점점이. 글로우는 엔진 라이팅으로 얹으므로 배경 조각은 플랫하게 생성한다.</li>
+        <li><span class="k">메뉴</span>: 게임 시작, 설정, 종료 세로 배치. 진입 시 게임 시작 포커스(호박 하이라이트). 게임패드 우선, 키보드와 마우스 지원.</li>
+      </ul>
+      <h3>생성 메모(요청서 013 반영)</h3>
+      <ul>
+        <li>16:9 고해상도 생성 후 320x180 기준 다운스케일. 좌하단은 버튼 오버레이라 비운다.</li>
+        <li>네거티브: 일본 오니, 검은 사신 도포, 도리이, 한자와 가나, 중국식 홍등과 궁, 대낮 파란 하늘, 네온.</li>
+        <li>로고 가제 "환생길"은 미확정. 확정 시 상단 여백에 로고 배치 후 이 시안 갱신.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================ INTRO ============================ -->
+  <h2>2. 오프닝 컷툰 (7페이지)</h2>
+  <p class="meta">근거: DESIGN_INTRO 4.2, 요청서 014. 정적 일러스트, 미국 컷툰(패널 분할) 연출. 페이지당 1~3패널, 총 12~14컷. 우선 제작: 3(트럭), 4(차사 대면).</p>
+  <p class="lede">문체는 담담한 관료적 부조리와 건조한 유머. 이름은 판독 불가로 처리해 플레이어가 자기 이름으로 착각하게 둔다(오인 호명 장치). 진행은 ui_accept 또는 위로, 스킵은 ui_cancel. 아래 썸네일은 패널 분할과 실루엣 배치안이며 대사는 스크립트 원문이다.</p>
+
+  <div class="flag">
+    <h3>차사 복장: 채택본 반영</h3>
+    <p style="margin:0">이 시안은 4~7페이지 차사를 <span class="k">검은 갓과 검은 두루마기</span>(허브 채택본, 창백하고 피곤한 관원)로 그린다. 오프닝 차사와 허브 "실수한 차사"는 동일 인물이므로 채택본과 통일했다. DESIGN_INTRO 4.2와 요청서 014는 아직 화려한 관복(홍철릭, 전립)으로 서술하므로 문서 정합이 필요하다. 하단 정합성 메모 참고.</p>
+  </div>
+
+  <div class="pages">
+
+    <div class="card">
+      <div class="pnum">page 1 / office</div>
+      <h4>야근 퇴근</h4>
+      <div class="panels">
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#101226"/>
+          <rect x="0" y="60" width="120" height="20" fill="#0c0e1e"/>
+          <rect x="60" y="30" width="40" height="26" fill="#1b2340"/>
+          <rect x="63" y="33" width="34" height="20" fill="#3a5a86"/>
+          <rect x="63" y="33" width="34" height="20" fill="#4a72a6" opacity="0.5"/>
+          <rect x="40" y="52" width="70" height="4" fill="#242238"/>
+          <ellipse cx="46" cy="46" rx="9" ry="12" fill="#0e0f1c"/>
+          <rect x="40" y="46" width="12" height="16" fill="#12131f"/>
+          <text x="6" y="16" font-family="sans-serif" font-size="8" fill="#5f6a86">a</text>
+        </svg></div>
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#16182e"/>
+          <rect x="0" y="8" width="30" height="56" fill="#0f1122"/>
+          <rect x="92" y="4" width="28" height="60" fill="#0f1122"/>
+          <rect x="30" y="20" width="12" height="44" fill="#12142a"/>
+          <rect x="0" y="62" width="120" height="18" fill="#0b0d1a"/>
+          <circle cx="86" cy="24" r="7" fill="#e0a94a" opacity="0.35"/>
+          <circle cx="86" cy="24" r="1.6" fill="#f2c87f"/>
+          <rect x="84" y="24" width="1.4" height="20" fill="#3a3a48"/>
+          <rect x="54" y="46" width="7" height="18" fill="#12131f"/>
+          <rect x="54" y="46" width="7" height="9" fill="#d9d6cc" opacity="0.5"/>
+          <text x="6" y="16" font-family="sans-serif" font-size="8" fill="#5f6a86">b</text>
+        </svg></div>
+      </div>
+      <p class="cap"><span class="lab">캡션</span> 또 막차 시간이다.</p>
+      <p class="dlg"><span class="who">독백</span> 사무실 불은 오늘도 내가 껐다. 집에 가서 눕기만 하면 돼.</p>
+    </div>
+
+    <div class="card">
+      <div class="pnum">page 2 / crosswalk</div>
+      <h4>횡단보도, 호명</h4>
+      <div class="panels">
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#14162c"/>
+          <rect x="0" y="60" width="120" height="20" fill="#0d0f1e"/>
+          <g>
+            <rect x="8" y="64" width="14" height="4" fill="#2a2c40"/>
+            <rect x="30" y="64" width="14" height="4" fill="#2a2c40"/>
+            <rect x="52" y="64" width="14" height="4" fill="#2a2c40"/>
+            <rect x="74" y="64" width="14" height="4" fill="#2a2c40"/>
+          </g>
+          <rect x="98" y="18" width="6" height="34" fill="#26283a"/>
+          <rect x="95" y="14" width="12" height="18" rx="2" fill="#111321"/>
+          <circle cx="101" cy="26" r="3" fill="#5fd07a"/>
+          <rect x="40" y="40" width="8" height="22" fill="#12131f"/>
+          <rect x="40" y="40" width="8" height="10" fill="#d9d6cc" opacity="0.5"/>
+          <text x="6" y="16" font-family="sans-serif" font-size="8" fill="#5f6a86">a</text>
+        </svg></div>
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#14162c"/>
+          <rect x="0" y="60" width="120" height="20" fill="#0d0f1e"/>
+          <rect x="6" y="64" width="16" height="4" fill="#2a2c40"/>
+          <rect x="30" y="64" width="16" height="4" fill="#2a2c40"/>
+          <rect x="54" y="64" width="16" height="4" fill="#2a2c40"/>
+          <rect x="40" y="38" width="8" height="24" fill="#12131f"/>
+          <ellipse cx="70" cy="30" rx="7" ry="5" fill="#e9e7dd"/><text x="66" y="32.5" font-family="sans-serif" font-size="6" fill="#555">OO아</text>
+          <ellipse cx="88" cy="24" rx="9" ry="6.5" fill="#e9e7dd"/><text x="82" y="26.5" font-family="sans-serif" font-size="7" fill="#555">OO아</text>
+          <ellipse cx="108" cy="17" rx="12" ry="8.5" fill="#e9e7dd"/><text x="100" y="20" font-family="sans-serif" font-size="8" fill="#555">OO아</text>
+          <text x="6" y="16" font-family="sans-serif" font-size="8" fill="#5f6a86">b</text>
+        </svg></div>
+      </div>
+      <p class="cap"><span class="lab">캡션</span> 누가 내 이름을 부른다.</p>
+      <p class="dlg"><span class="who">말풍선</span> "OO아" 세 개가 뒤에서 점점 크게(이름 판독 불가)</p>
+    </div>
+
+    <div class="card">
+      <div class="pnum">page 3 / truck</div>
+      <h4>뒤돌아봄, 트럭, 강한 빛</h4>
+      <div class="panels">
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#171a30"/>
+          <ellipse cx="60" cy="44" rx="30" ry="34" fill="#0f101d"/>
+          <ellipse cx="60" cy="30" rx="26" ry="16" fill="none"/>
+          <path d="M40 30 q6 -6 12 0" stroke="#c9c6bc" stroke-width="1.5" fill="none"/>
+          <circle cx="70" cy="40" r="4.5" fill="#e9e7dd"/><circle cx="71" cy="40" r="2" fill="#20222f"/>
+          <text x="6" y="16" font-family="sans-serif" font-size="8" fill="#5f6a86">a</text>
+        </svg></div>
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="p3flash" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0" stop-color="#ffffff"/><stop offset="0.5" stop-color="#fff6e0" stop-opacity="0.6"/><stop offset="1" stop-color="#fff6e0" stop-opacity="0"/></linearGradient></defs>
+          <rect width="120" height="80" fill="#141628"/>
+          <rect x="0" y="60" width="120" height="20" fill="#0d0f1e"/>
+          <polygon points="120,10 120,70 30,54 30,34" fill="url(#p3flash)"/>
+          <circle cx="104" cy="40" r="6" fill="#fff8ea"/>
+          <rect x="20" y="40" width="7" height="20" fill="#0c0d18"/>
+          <text x="6" y="16" font-family="sans-serif" font-size="8" fill="#8a7a58">b</text>
+        </svg></div>
+      </div>
+      <p class="sfx">효과음: 빵—</p>
+      <p class="cap"><span class="lab">전환</span> 페이지 끝에서 화이트 플래시. 코드 플래시(흰 ColorRect 알파)와 연동. 컷 끝을 밝게 마감.</p>
+    </div>
+
+    <div class="card">
+      <div class="pnum">page 4 / saja (우선 제작)</div>
+      <h4>저승사자 대면</h4>
+      <div class="panels">
+        <div class="frame"><svg viewBox="0 0 246 96" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="246" height="96" fill="#2a2c46"/>
+          <rect x="0" y="0" width="246" height="20" fill="#20233c"/>
+          <line x1="0" y1="20" x2="246" y2="20" stroke="#3a3d55" stroke-width="1"/>
+          <!-- looming chasa: black wide-brim hat + black robe + pale tired face -->
+          <polygon points="123,96 96,96 104,44 142,44 150,96" fill="#14141c"/>
+          <ellipse cx="123" cy="40" rx="14" ry="15" fill="#141420"/>
+          <ellipse cx="123" cy="38" rx="9" ry="10" fill="#c9b79a"/>
+          <ellipse cx="123" cy="26" rx="26" ry="6.5" fill="#0e0e16"/>
+          <rect x="116" y="16" width="14" height="12" fill="#12121b"/>
+          <circle cx="119" cy="38" r="1.3" fill="#20202c"/><circle cx="127" cy="38" r="1.3" fill="#20202c"/>
+          <!-- hand to head -->
+          <ellipse cx="140" cy="24" rx="4" ry="3" fill="#c9b79a"/>
+          <!-- scroll in other hand -->
+          <rect x="150" y="60" width="16" height="6" rx="3" fill="#c8b98a"/>
+          <text x="8" y="14" font-family="sans-serif" font-size="9" fill="#7f8ba3">저시점(POV): 눈을 뜬 주인공 시야. 차사가 머리를 짚고 내려다봄</text>
+        </svg></div>
+      </div>
+      <p class="cap"><span class="lab">캡션</span> 눈을 뜨니 낯선 천장.</p>
+      <p class="dlg"><span class="who">차사</span> 어어, 깼네. (혼잣말) …어, 잠깐.</p>
+    </div>
+
+    <div class="card">
+      <div class="pnum">page 5 / mistake</div>
+      <h4>동명이인 오류</h4>
+      <div class="panels">
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#2a2c46"/>
+          <rect x="0" y="58" width="120" height="22" fill="#22243a"/>
+          <polygon points="70,80 44,80 50,34 84,34 92,80" fill="#14141c"/>
+          <ellipse cx="66" cy="30" rx="10" ry="11" fill="#141420"/>
+          <ellipse cx="66" cy="29" rx="6.5" ry="7.5" fill="#c9b79a"/>
+          <ellipse cx="66" cy="20" rx="18" ry="4.6" fill="#0e0e16"/>
+          <circle cx="72" cy="22" r="1.6" fill="#bfe0f0"/>
+          <rect x="30" y="44" width="16" height="12" fill="#c8b98a"/>
+          <rect x="86" y="46" width="16" height="12" fill="#b9a877"/>
+          <text x="6" y="14" font-family="sans-serif" font-size="8" fill="#5f6a86">a 장부 대조, 식은땀</text>
+        </svg></div>
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#24263c"/>
+          <rect x="14" y="20" width="36" height="46" fill="#c8b98a"/>
+          <line x1="20" y1="30" x2="44" y2="30" stroke="#7a6f4a" stroke-width="1.5"/>
+          <line x1="20" y1="38" x2="44" y2="38" stroke="#7a6f4a" stroke-width="1.5"/>
+          <circle cx="86" cy="34" r="13" fill="#3a3d55"/><ellipse cx="86" cy="33" rx="8" ry="9" fill="#c9b79a"/>
+          <path d="M66 18 L104 58 M104 18 L66 58" stroke="#d0503f" stroke-width="3"/>
+          <text x="6" y="14" font-family="sans-serif" font-size="8" fill="#5f6a86">b 이름 불일치 표식</text>
+        </svg></div>
+      </div>
+      <p class="dlg"><span class="who">차사</span> 김… 아니 이…? 동명이인이네. 자네, 아직 죽을 때가 아니야.</p>
+      <p class="cap"><span class="lab">캡션</span> 잘못 데려온 것이다.</p>
+    </div>
+
+    <div class="card">
+      <div class="pnum">page 6 / queue</div>
+      <h4>50년 대기와 특수창고, 거부</h4>
+      <div class="panels">
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#20233c"/>
+          <rect x="0" y="60" width="120" height="20" fill="#181a2e"/>
+          <rect x="6" y="22" width="40" height="26" fill="#161829"/>
+          <rect x="10" y="26" width="32" height="10" fill="#3a5a86" opacity="0.5"/>
+          <g fill="#aeb8c4" opacity="0.6">
+            <ellipse cx="56" cy="54" rx="4" ry="8"/><ellipse cx="68" cy="54" rx="4" ry="8"/>
+            <ellipse cx="80" cy="54" rx="4" ry="8"/><ellipse cx="92" cy="54" rx="4" ry="8"/>
+            <ellipse cx="104" cy="54" rx="4" ry="8"/>
+          </g>
+          <rect x="52" y="18" width="12" height="8" fill="#c8b98a"/><text x="53.5" y="24.5" font-family="sans-serif" font-size="6" fill="#4a4222">番</text>
+          <text x="6" y="14" font-family="sans-serif" font-size="7.5" fill="#5f6a86">a 대기줄, 번호표</text>
+        </svg></div>
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#1c1e34"/>
+          <line x1="10" y1="12" x2="30" y2="20" stroke="#3a3d55" stroke-width="1"/>
+          <rect x="26" y="18" width="66" height="24" rx="2" fill="#4a4230"/>
+          <rect x="26" y="18" width="66" height="24" rx="2" fill="none" stroke="#14141c" stroke-width="1.5"/>
+          <text x="34" y="35" font-family="sans-serif" font-size="12" fill="#d8c99a" font-weight="700">특수창고</text>
+          <rect x="6" y="52" width="108" height="4" fill="#2a2c42"/>
+          <rect x="14" y="56" width="12" height="10" fill="#2f3252"/><rect x="40" y="56" width="12" height="10" fill="#2f3252"/>
+          <text x="6" y="14" font-family="sans-serif" font-size="7.5" fill="#5f6a86">b 먼지 쌓인 팻말</text>
+        </svg></div>
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#242238"/>
+          <ellipse cx="60" cy="42" rx="24" ry="28" fill="#12131f"/>
+          <ellipse cx="60" cy="40" rx="16" ry="19" fill="#d8b48c"/>
+          <rect x="46" y="50" width="28" height="5" fill="#6a4a3a"/>
+          <path d="M50 34 q10 -4 20 0" stroke="#20202c" stroke-width="1.6" fill="none"/>
+          <circle cx="53" cy="40" r="1.6" fill="#20202c"/><circle cx="67" cy="40" r="1.6" fill="#20202c"/>
+          <text x="6" y="14" font-family="sans-serif" font-size="7.5" fill="#5f6a86">c 굳은 표정</text>
+        </svg></div>
+      </div>
+      <p class="dlg"><span class="who">차사</span> 돌아가려면 반송 도장이 필요한데, 대기가 좀 있어. 원래 삼백 년인데 자넨 특수창고라 오십 년만 기다리면 돼.</p>
+      <p class="dlg"><span class="who">주인공</span> 오십 년을 어떻게 기다려.</p>
+    </div>
+
+    <div class="card">
+      <div class="pnum">page 7 / resolve</div>
+      <h4>직접 상행 결의</h4>
+      <div class="panels">
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#1a1c34"/>
+          <radialGradient id="p7glow" cx="0.7" cy="0.3" r="0.6"><stop offset="0" stop-color="#5a4526"/><stop offset="1" stop-color="#1a1c34" stop-opacity="0"/></radialGradient>
+          <rect width="120" height="80" fill="url(#p7glow)"/>
+          <path d="M112 24 L112 60 L100 60 L100 52 L92 46 L84 52 L84 60 L74 60 L74 24 Z" fill="#20233c"/>
+          <path d="M20 78 L48 74 L58 52 L78 46 L86 30" fill="none" stroke="#4a4327" stroke-width="2" opacity="0.8"/>
+          <path d="M18 80 L52 74 L60 54 L44 56 L38 78 Z" fill="#2c2a44"/>
+          <text x="6" y="14" font-family="sans-serif" font-size="7.5" fill="#5f6a86">a 상행 길, 먼 염라대전</text>
+        </svg></div>
+        <div class="frame"><svg viewBox="0 0 120 80" style="width:100%;height:auto" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="80" fill="#20233c"/>
+          <rect x="0" y="62" width="120" height="18" fill="#181a2e"/>
+          <path d="M78 20 L86 34 L82 58 L96 58 L98 30" fill="none" stroke="#4a4327" stroke-width="1.5" opacity="0.6"/>
+          <polygon points="66,78 44,78 48,36 62,36 66,78" fill="#12131f"/>
+          <rect x="48" y="34" width="14" height="14" fill="#d8b48c"/>
+          <rect x="46" y="40" width="7" height="12" fill="#e2ddcf"/>
+          <rect x="57" y="40" width="7" height="12" fill="#e2ddcf"/>
+          <text x="6" y="14" font-family="sans-serif" font-size="7.5" fill="#5f6a86">b 소매 걷고 돌아서는 뒷모습</text>
+        </svg></div>
+      </div>
+      <p class="dlg"><span class="who">주인공</span> 직접 가서 도장 받아 오면 되잖아.</p>
+      <p class="dlg"><span class="who">차사</span> (다급하게) 거긴 함부로 가는 데가—</p>
+      <p class="cap"><span class="lab">캡션</span> 염라를 만나러, 위로. 종료 후 허브 진입.</p>
+    </div>
+
+  </div>
+  <p class="foot">진행: ui_accept 또는 위로 다음. 한 페이지 여러 대사는 대사 단위로 넘긴 뒤 페이지 전환. 스킵: ui_cancel(관람 플래그 참, 허브로). 3페이지 화이트 플래시 후 4페이지로.</p>
+
+
+  <!-- ============================ HUB ============================ -->
+  <h2>3. 시작 허브: 저승 초입 접수청</h2>
+  <p class="meta">근거: DESIGN_HUB 1 3 4 8장, 요청서 015 016. 좌우 진행 2D 공간, 허브 폭 약 480px, 지면선 앵커 y160. 좌측 특수창고(반송), 우측 상행문(1막 진입).</p>
+  <div style="width:100%" class="frame">
+    <svg viewBox="0 0 480 180" style="width:100%;height:auto;display:block" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="hubhorizon" cx="0.9" cy="0.55" r="0.4"><stop offset="0" stop-color="#5a4526"/><stop offset="1" stop-color="#23263f" stop-opacity="0"/></radialGradient>
+        <radialGradient id="hublglow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#e0a94a" stop-opacity="0.5"/><stop offset="1" stop-color="#e0a94a" stop-opacity="0"/></radialGradient>
+      </defs>
+
+      <!-- L0 interior twilight -->
+      <rect x="0" y="0" width="480" height="160" fill="#23263f"/>
+      <rect x="0" y="0" width="480" height="160" fill="url(#hubhorizon)"/>
+      <!-- back top beam / tiled roof band -->
+      <rect x="0" y="0" width="480" height="16" fill="#1a1c30"/>
+      <polygon points="0,16 480,16 480,26 0,26" fill="#20233a"/>
+
+      <!-- L1 far: distant palace up-right (상행문 너머) -->
+      <path d="M470 120 L470 78 L458 78 L458 70 L448 62 L438 70 L438 78 L426 78 L426 120 Z" fill="#1d2038" opacity="0.9"/>
+
+      <!-- 계단식 깊이: 중경 창구 열(back baseline ~150) -->
+      <g>
+        <rect x="150" y="60" width="150" height="90" fill="#282b48"/>
+        <!-- 민원창구 3칸 -->
+        <rect x="158" y="72" width="38" height="40" fill="#191b30"/>
+        <rect x="204" y="72" width="38" height="40" fill="#191b30"/>
+        <rect x="250" y="72" width="38" height="40" fill="#191b30"/>
+        <rect x="158" y="72" width="38" height="40" fill="none" stroke="#3a3d55" stroke-width="1.5"/>
+        <rect x="204" y="72" width="38" height="40" fill="none" stroke="#3a3d55" stroke-width="1.5"/>
+        <rect x="250" y="72" width="38" height="40" fill="none" stroke="#3a3d55" stroke-width="1.5"/>
+        <!-- counters + stacked ledgers -->
+        <rect x="150" y="112" width="150" height="8" fill="#4a4230"/>
+        <rect x="168" y="104" width="12" height="8" fill="#c8b98a"/><rect x="170" y="100" width="12" height="6" fill="#b9a877"/>
+        <rect x="256" y="104" width="12" height="8" fill="#c8b98a"/>
+        <!-- 번호표 기계 -->
+        <rect x="292" y="96" width="10" height="18" fill="#2f3252"/><rect x="293" y="99" width="8" height="5" fill="#d8c99a"/>
+      </g>
+
+      <!-- lantern accents (engine lights final) -->
+      <circle cx="150" cy="70" r="16" fill="url(#hublglow)"/><circle cx="150" cy="70" r="2.4" fill="#f2c87f"/>
+      <circle cx="300" cy="74" r="14" fill="url(#hublglow)"/><circle cx="300" cy="74" r="2" fill="#f2c87f"/>
+
+      <!-- ================= LEFT: 특수창고 (사적 공간, 반송) ================= -->
+      <rect x="0" y="26" width="120" height="134" fill="#191b30"/>
+      <line x1="120" y1="26" x2="120" y2="160" stroke="#12131f" stroke-width="2"/>
+      <!-- shelves -->
+      <line x1="8" y1="52" x2="110" y2="52" stroke="#2c2e46" stroke-width="3"/>
+      <line x1="8" y1="78" x2="110" y2="78" stroke="#2c2e46" stroke-width="3"/>
+      <line x1="8" y1="104" x2="110" y2="104" stroke="#2c2e46" stroke-width="3"/>
+      <rect x="14" y="40" width="16" height="12" fill="#2f3252"/><rect x="40" y="40" width="20" height="12" fill="#2b2e4a"/><rect x="74" y="42" width="14" height="10" fill="#2f3252"/>
+      <rect x="18" y="66" width="18" height="12" fill="#2b2e4a"/><rect x="60" y="66" width="22" height="12" fill="#2f3252"/>
+      <!-- hanging name tags -->
+      <g stroke="#3a3d55" stroke-width="1"><line x1="30" y1="26" x2="30" y2="34"/><line x1="52" y1="26" x2="52" y2="36"/><line x1="80" y1="26" x2="80" y2="32"/></g>
+      <rect x="26" y="34" width="8" height="10" fill="#c8b98a"/><rect x="48" y="36" width="8" height="10" fill="#b9a877"/><rect x="76" y="32" width="8" height="10" fill="#c8b98a"/>
+      <!-- SpawnPoint marker on floor -->
+      <circle cx="44" cy="156" r="7" fill="none" stroke="#6fd0e0" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <circle cx="44" cy="156" r="2" fill="#6fd0e0"/>
+
+      <!-- ================= FLOOR (지면선 y160) ================= -->
+      <rect x="0" y="160" width="480" height="20" fill="#332d26"/>
+      <rect x="0" y="160" width="480" height="3" fill="#4a4234"/>
+      <line x1="0" y1="160" x2="480" y2="160" stroke="#6fd0e0" stroke-width="0.6" stroke-dasharray="4 3" opacity="0.5"/>
+
+      <!-- ================= 떠도는 혼 (군상, 해금 비례) ================= -->
+      <g fill="#aeb8c4"><ellipse cx="330" cy="150" rx="4" ry="9" opacity="0.3"/><ellipse cx="344" cy="151" rx="4" ry="9" opacity="0.24"/><ellipse cx="356" cy="150" rx="4" ry="9" opacity="0.28"/></g>
+
+      <!-- ================= NPCs (z: 플레이어보다 낮게) ================= -->
+      <!-- 실수한 차사: 검은 갓, 검은 두루마기, 장부 (A2 진행 반영) -->
+      <g>
+        <rect x="150" y="150" width="26" height="6" fill="#3a3327"/>
+        <polygon points="170,150 154,150 157,132 167,132" fill="#14141c"/>
+        <ellipse cx="162" cy="129" rx="6" ry="6.5" fill="#c9b79a"/>
+        <ellipse cx="162" cy="124" rx="12" ry="3.2" fill="#0e0e16"/>
+        <rect x="152" y="140" width="12" height="8" fill="#c8b98a"/>
+        <circle cx="160" cy="129" r="0.9" fill="#20202c"/><circle cx="164" cy="129" r="0.9" fill="#20202c"/>
+      </g>
+      <!-- 접수 관원: 청회색 관복, 창구 뒤 -->
+      <g>
+        <polygon points="230,150 216,150 218,130 228,130" fill="#5a6274"/>
+        <ellipse cx="223" cy="126" rx="6" ry="6.5" fill="#c9b79a"/>
+        <ellipse cx="223" cy="121" rx="9" ry="3" fill="#2a2d40"/>
+        <line x1="220" y1="127" x2="220" y2="129" stroke="#7a5a4a" stroke-width="1"/><line x1="226" y1="127" x2="226" y2="129" stroke="#7a5a4a" stroke-width="1"/>
+      </g>
+      <!-- 늙은 서기 혼: 반투명, 두루마리 -->
+      <g opacity="0.72">
+        <polygon points="272,150 260,150 262,132 270,132" fill="#8f9bb0"/>
+        <ellipse cx="266" cy="128" rx="5.5" ry="6" fill="#c3ccd6"/>
+        <rect x="258" y="138" width="10" height="5" rx="2" fill="#c8b98a"/>
+        <path d="M262 122 q4 -3 8 0" stroke="#e6e2d6" stroke-width="1" fill="none"/>
+      </g>
+      <!-- 주모: 좌판, 소반, 국자 -->
+      <g>
+        <rect x="316" y="146" width="34" height="4" fill="#5a4a34"/>
+        <rect x="320" y="140" width="10" height="6" fill="#7a3b3b"/>
+        <polygon points="340,150 328,150 330,132 338,132" fill="#8a5a44"/>
+        <rect x="330" y="132" width="8" height="8" fill="#d8b48c"/>
+        <ellipse cx="334" cy="128" rx="6" ry="5.5" fill="#3a2a22"/>
+      </g>
+      <!-- 삽살개 (해금형): 점선 유령 -->
+      <g stroke="#7f8ba3" stroke-width="1" stroke-dasharray="3 2" fill="none" opacity="0.85">
+        <ellipse cx="300" cy="153" rx="11" ry="7"/><circle cx="311" cy="149" r="5"/>
+      </g>
+      <!-- 대장장이 도깨비 (해금형): 점선 유령 -->
+      <g stroke="#7f8ba3" stroke-width="1" stroke-dasharray="3 2" fill="none" opacity="0.85">
+        <polygon points="104,155 86,155 89,132 101,132"/><circle cx="95" cy="127" r="6"/>
+        <line x1="101" y1="140" x2="110" y2="134"/><rect x="108" y="130" width="6" height="6"/>
+      </g>
+
+      <!-- ================= PLAYER ================= -->
+      <g>
+        <polygon points="196,156 182,156 184,132 194,132" fill="#2a3550"/>
+        <rect x="184" y="134" width="10" height="9" fill="#e2ddcf"/>
+        <line x1="189" y1="134" x2="189" y2="141" stroke="#8a3b3b" stroke-width="1.4"/>
+        <ellipse cx="189" cy="127" rx="6" ry="6.5" fill="#d8b48c"/>
+        <path d="M183 124 q6 -4 12 0" stroke="#20202c" stroke-width="1.4" fill="none"/>
+      </g>
+      <!-- camera bracket -->
+      <rect x="150" y="96" width="78" height="70" fill="none" stroke="#6fd0e0" stroke-width="0.7" stroke-dasharray="5 3" opacity="0.5"/>
+
+      <!-- ================= RIGHT: 상행문 (1막 진입) ================= -->
+      <rect x="404" y="40" width="60" height="120" fill="#1c1f38"/>
+      <path d="M414 160 L414 70 Q434 52 454 70 L454 160 Z" fill="#12142a"/>
+      <path d="M420 160 L420 78 Q434 66 448 78 L448 160 Z" fill="#0c0d1a"/>
+      <path d="M424 158 L432 120 L440 92" fill="none" stroke="#4a4327" stroke-width="1.5" opacity="0.7"/>
+      <circle cx="434" cy="60" r="10" fill="url(#hublglow)"/>
+
+      <!-- flow arrows -->
+      <g opacity="0.85">
+        <text x="8" y="176" font-family="sans-serif" font-size="7" fill="#7f8ba3">좌: 특수창고 반송</text>
+        <text x="392" y="176" font-family="sans-serif" font-size="7" fill="#7f8ba3">우: 상행문 진입</text>
+      </g>
+
+      <!-- ================= LABELS ================= -->
+      <g font-family="sans-serif" fill="#e8e4d8">
+        <text x="6" y="36" font-size="7.5" fill="#c7c5ba">특수창고</text>
+        <text x="20" y="150" font-size="6.5" fill="#9fd6e0">SpawnPoint</text>
+        <text x="132" y="128" font-size="7" fill="#f2c87f">실수한 차사</text>
+        <line x1="150" y1="130" x2="162" y2="132" stroke="#f2c87f" stroke-width="0.5"/>
+        <text x="206" y="118" font-size="7" fill="#cfe0ef">접수 관원</text>
+        <text x="252" y="120" font-size="7" fill="#cfe0ef">늙은 서기 혼</text>
+        <text x="316" y="126" font-size="7" fill="#cfe0ef">주모</text>
+        <text x="286" y="140" font-size="6.5" fill="#9aa6bd">삽살개(해금)</text>
+        <text x="80" y="120" font-size="6.5" fill="#9aa6bd">대장장이(해금)</text>
+        <text x="168" y="150" font-size="7" fill="#bfe0ff">플레이어</text>
+        <text x="410" y="52" font-size="7" fill="#f2c87f">상행문</text>
+        <!-- interaction prompt example -->
+        <rect x="207" y="104" width="30" height="10" rx="2" fill="#0d0f1c" opacity="0.8"/>
+        <text x="210" y="111.5" font-size="6.5" fill="#f2e9d2">위: 대화</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="row">
+    <div class="notes">
+      <h3>공간 구성</h3>
+      <ul>
+        <li><span class="k">좌 특수창고</span>: 사적 공간이자 사망 반송 스폰 지점. 선반, 상자, 매달린 이름표. 오프닝 6페이지의 특수창고와 직결.</li>
+        <li><span class="k">중앙 접수 홀</span>: 민원창구 열, 번호표, 서류 더미, 대기줄. 접수청 직원 NPC가 자리한다.</li>
+        <li><span class="k">우 상행문</span>: 위로 뻗은 길과 1막 진입구. 위를 누르면 페이드 후 스테이지로 전환.</li>
+        <li><span class="k">지면</span>: 평평한 한 층(발판 기믹 없음). 지면선 y160. 계단식 깊이로 창구 열을 뒤쪽 높은 바닥선에 둔다.</li>
+      </ul>
+    </div>
+    <div class="notes">
+      <h3>NPC와 규칙</h3>
+      <ul>
+        <li><span class="k">실수한 차사</span>: 오프닝 저승사자와 동일 인물. 검은 갓과 검은 두루마기, 창백하고 피곤한 표정. 영구 업그레이드(여의주 조각).</li>
+        <li><span class="k">접수 관원</span>: 청회색 과로 관원(다크서클, 서류 더미). 민원창구 신규 NPC.</li>
+        <li><span class="k">늙은 서기 혼</span>: 반투명 노쇠한 서기, 명부와 절차 해설.</li>
+        <li><span class="k">주모</span>: 요깃거리 좌판, 상점과 식사 버프. <span class="k">삽살개, 대장장이 도깨비</span>는 해금형(점선 표시).</li>
+        <li><span class="k">애니메이션 필수</span>: 정적 스프라이트 금지. 차사 유휴 루프는 장부 정리, 두루마리 읽고 쓰기, 넋 나감 순환에 말 걸면 놀람(A2 진행 중).</li>
+        <li><span class="k">깊이와 z</span>: NPC는 플레이어보다 낮은 z로 렌더링해 가리지 않게. 상호작용은 근처에서 위(move_up), 프롬프트 "위: 대화".</li>
+        <li><span class="k">복작복작</span>: 해금 수가 늘수록 떠도는 혼 군상이 접수 홀에 늘어난다.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="foot">팔레트: 1막 시장 난색과 구분되는 접수청 서브 팔레트(침침한 중채도). 야간 침전은 Godot 레이어 모듈레이트로 재현하고 조각 원본은 플랫 유지. 등불 글로우는 엔진 라이팅.</p>
+
+
+  <!-- ============================ FOOTER ============================ -->
+  <h2>4. 문서 정합성 메모</h2>
+  <p class="lede">시안을 작성하며 문서 간 충돌을 발견했다. 진행 전 결정과 반영이 필요하다(기획 단일 기준은 GDD, 결정은 DECISIONS 기록).</p>
+
+  <div class="flag">
+    <h3>충돌 1. 차사(저승사자) 복장</h3>
+    <p style="margin:0 0 6px">동일 인물(오프닝 저승사자 = 허브 실수한 차사)의 복장 서술이 문서마다 다르다.</p>
+    <ul style="margin:0">
+      <li>텍스트 기준: <span class="k">화려한 관복</span>. GDD 2장 "화려한 복장의 저승사자", DESIGN_INTRO 4페이지와 요청서 014 "홍철릭, 전립, 검은 도포 금지".</li>
+      <li>채택 생성물: <span class="k">검은 갓, 검은 두루마기</span>. DESIGN_HUB 4장, frontend README, 세션 A2. 감재사자도 화려 무장형이 저승사자 느낌이 약해 검은 갓과 두루마기로 확정했다는 기록.</li>
+      <li>이 시안은 채택 생성물(검은 갓, 검은 두루마기)로 그렸다. 권고: 채택안으로 GDD 2장, DESIGN_INTRO 4장, 요청서 014를 갱신하고 DECISIONS에 사유를 남긴다. 반대로 화려 관복을 살리려면 채택 생성물을 재검토한다.</li>
+    </ul>
+  </div>
+
+  <div class="flag">
+    <h3>충돌 2. 저승사자 애니메이션 캐릭터 비율</h3>
+    <p style="margin:0">세션 A2가 정적 그리드의 약 2.5등신 저승사자를 플레이어와 같은 <span class="k">3등신 베이스</span>로 교체 생성 중이다. 요청서 016의 "32x32 우선, 2~3등신" 기준과 통일하려면 3등신으로 확정하고 016에 반영한다.</p>
+  </div>
+
+  <div class="flag info">
+    <h3>미확정 항목(시안 표기)</h3>
+    <ul style="margin:0">
+      <li>타이틀 로고 가제 "환생길"은 미확정(GDD 1장). 시안은 플레이스홀더.</li>
+      <li>접수청 서브 팔레트 색값은 잠정. M2 S0 선별에서 확정 후 시안 갱신.</li>
+      <li>키비주얼(타이틀 배경, 컷툰)은 PixelLab 상한 512x512를 넘는 해상도가 필요할 수 있다. 필요 시 별도 도구 검토(ART_PIPELINE 4장).</li>
+    </ul>
+  </div>
+
+  <h2>5. 다음 단계</h2>
+  <ul>
+    <li><span class="k">구도 확정</span>: 이 시안으로 요소 배치와 레이어를 합의한 뒤 생성으로 이관한다.</li>
+    <li><span class="k">PixelLab 생성</span>(별도 세션, Claude in Chrome): 013 타이틀 배경, 014 컷툰(우선 3 트럭, 4 차사), 015 허브 배경 레이어 조각, 016 허브 NPC 잔여(서기, 주모, 삽살개, 대장장이). 배경 조각은 플랫하게 생성하고 밤 침전과 글로우는 엔진이 담당.</li>
+    <li><span class="k">Godot 교체 지점</span>: main_menu의 배경 ColorRect, intro.gd 페이지별 art 슬롯, hub.tscn의 Bg/Terrain/NPC 플레이스홀더.</li>
+    <li><span class="k">문서 반영</span>: 충돌 1, 2 결정 후 DECISIONS 기록, GDD와 DESIGN_INTRO, DESIGN_HUB, 요청서 014 016 갱신.</li>
+  </ul>
+  <p class="foot">파일: art_src/previz/frontend_previz.html. 텍스트 자산이라 커밋 가능. 이 시안은 실제 픽셀 에셋이 아니라 생성 전 구도 기준이다.</p>
+
+
+</div>
+</body>
+</html>

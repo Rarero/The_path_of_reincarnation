@@ -1,0 +1,36 @@
+{
+  "group_id": "3581f732-edcb-4927-a455-8c0452b214fb",
+  "states": [
+    {
+      "character": {
+        "id": "3c147c9a-740d-412b-a225-7767b72d3f54",
+        "name": "Idle",
+        "prompt": "modern korean young man in dark casual bomber jacket and pants, a pale yellow paper talisman strip pinned to his chest, rough hemp cloth sash tied across the torso, short black hair, holding an old hunting rifle with a bayonet, chibi 2.5 head proportions, small pixel art character, black outline, muted subdued colors",
+        "size": {
+          "width": 56,
+          "height": 56
+        },
+        "template_id": "mannequin",
+        "directions": 8,
+        "view": "side",
+        "created_at": "2026-08-01T13:53:12.115758+00:00"
+      },
+      "folder": "Idle",
+      "frames": {
+        "rotations": {
+          "south": "Idle/rotations/south.png",
+          "south-east": "Idle/rotations/south-east.png",
+          "east": "Idle/rotations/east.png",
+          "north-east": "Idle/rotations/north-east.png",
+          "north": "Idle/rotations/north.png",
+          "north-west": "Idle/rotations/north-west.png",
+          "west": "Idle/rotations/west.png",
+          "south-west": "Idle/rotations/south-west.png"
+        },
+        "animations": {}
+      }
+    }
+  ],
+  "export_version": "3.1",
+  "export_date": "2026-08-01T13:59:59.846203"
+}

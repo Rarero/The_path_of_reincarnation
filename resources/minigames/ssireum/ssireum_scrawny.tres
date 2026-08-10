@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SsireumOpponent" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ssireum_opponent.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+weight = 45.0
+id = &"ssireum_scrawny"
+display_name = "마른 장정"
+true_form = "헌 빗자루"
+frames_path = "res://scenes/enemies/wrestler_frames.tres"
+placeholder_art = false
+push_speed = 0.22
+mash_per_prompt = 10
+gain_per_hit = 0.080
+miss_penalty = 0.06
+is_big = false
+win_coins = 24
+lose_damage = 8
+win_relic_chance = 0.0
+designer_note = "조형은 씨름꾼(ENEMIES 5.4)이다. 요청서 023으로 생성해 wrestler_frames.tres에 연결했다. 밤길에서 처음 만나는 상대. 연타 리듬을 익히게 하는 난이도다. 초당 4회면 약 10초에 이기고 초당 3회는 제한 시간 판정승이다 (2026-08-06 2차 재조정)"

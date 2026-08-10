@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventNodeConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_node_config.gd" id="1_cfg"]
+
+[resource]
+script = ExtResource("1_cfg")
+odds_tier = 2
+positive_chance = 0.3
+pick_weight = 1.0
+designer_note = "스산함. 고위험. 큰 값 결과와 자주 짝짓는다. 표시값은 초안"

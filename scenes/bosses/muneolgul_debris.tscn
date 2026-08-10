@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/bosses/muneolgul_debris.gd" id="1_debris"]
+[ext_resource type="Script" path="res://scripts/components/hitbox.gd" id="2_hitbox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hit"]
+size = Vector2(16, 16)
+
+[node name="MuneolgulDebris" type="Node2D"]
+script = ExtResource("1_debris")
+
+[node name="Visual" type="Sprite2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 8
+monitoring = false
+script = ExtResource("2_hitbox")
+damage = 10
+active_duration = 0.0
+
+[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_hit")

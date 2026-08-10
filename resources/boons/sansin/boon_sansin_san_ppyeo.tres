@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="BoonDef" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/boon_def.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/data/boon_effect.gd" id="2_eff"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/boons/boon_sansin_san_ppyeo.png" id="9_icon"]
+
+[sub_resource type="Resource" id="stat_0"]
+script = ExtResource("2_eff")
+hook = 0
+target_key = &"damage_taken"
+base_value = -0.1
+is_multiplier = true
+rarity_scales = true
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="special_0"]
+script = ExtResource("2_eff")
+hook = 14
+target_key = &"san_ppyeo_invuln"
+base_value = 1.0
+is_multiplier = false
+rarity_scales = false
+chance = 1.0
+duration_sec = 2.0
+cooldown_sec = 12.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[resource]
+script = ExtResource("1_def")
+icon = ExtResource("9_icon")
+id = &"boon_sansin_san_ppyeo"
+display_name = "산의 뼈"
+pantheon = 0
+layer = 0
+sub_pantheon = -1
+weapon_tag = 0
+weapon_tag_inherits = false
+kind = 0
+tier = 1
+act_pool = Array[int]([1, 2, 3])
+implemented = true
+m2_priority = true
+description = "쓰면 2초 동안 제자리에서 무적이 된다. 그동안 공격도 이동도 할 수 없다. 받는 피해가 소폭 준다."
+designer_note = "산신 1티어 액티브 (docs/systems/BOONS.md 8.2). 완전 무적이되 아무것도 못 하는 형태라 쓰는 타이밍이 전부다. 보스 패턴을 통째로 흘려보내는 용도. 실제 무적 판정과 조작 잠금은 Godot 후속."
+stat_effects = Array[BoonEffect]([SubResource("stat_0")])
+special_effects = Array[BoonEffect]([SubResource("special_0")])
+special_mark = Array[BoonEffect]([])
+fusion_tags = Array[StringName]([&"chigi", &"beotim"])
+fusion_accepts = Array[StringName]([&"beonjim", &"georeum"])
+fusion_deny_ids = Array[StringName]([])
+activation = 1
+active_cooldown_sec = 12.0
+cooldown_growth_sec = 0.0
+grants_new_attack = false

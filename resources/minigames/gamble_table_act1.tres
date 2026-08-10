@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GambleTable" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/gamble_table.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+rounds = 3
+min_bet = 10
+bet_step = 10
+max_bet_ratio = 0.5
+even_money_mult = 2.0
+small_big_mult = 2.0
+pair_mult = 5.0
+designer_note = "1막 노름판 초안. 투전과 골패는 비기면 환급이라 기대값 1.0이고, 썅륙은 합 7 하우스 승 때문에 세 베팅 모두 0.833이다. 내기방 기대값 중립 원칙과 어긋나므로 밸런싱에서 재검토한다 (DECISIONS 2026-08-06)"

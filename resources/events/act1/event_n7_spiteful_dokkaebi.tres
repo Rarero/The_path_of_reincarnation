@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_spiteful_dokkaebi"
+display_name = "심술 도깨비"
+polarity = 1
+score = -10
+trigger = 0
+room_flavor = 1
+theme_tags = Array[StringName]([])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = false
+m2_priority = false
+act = 1
+implemented = false
+params = { "wisp_blackout_rate": 1.5 }
+designer_note = "N7. 함정 소폭 추가와 도깨비불 소등 빈도 증가. 정합표의 전투형 또는 플랫포밍형 중 발판 교란 쪽을 채택해 플랫포밍형으로 확정한다. EVENTS 5장 N7"

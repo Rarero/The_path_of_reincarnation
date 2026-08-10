@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/exit_door.gd" id="1_door"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bg/act1/bg_gwimun_gate.png" id="2_gate"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fx/glow_radial_64.png" id="3_glow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_area"]
+size = Vector2(40, 60)
+
+[sub_resource type="Gradient" id="Gradient_puff"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(0.353, 0.863, 0.784, 0.9, 0.353, 0.863, 0.784, 0)
+
+[node name="ExitDoor" type="Node2D"]
+script = ExtResource("1_door")
+
+[node name="Glow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -36)
+texture = ExtResource("3_glow")
+modulate = Color(0.353, 0.863, 0.784, 0.9)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -39)
+texture = ExtResource("2_gate")
+
+[node name="Puff" type="CPUParticles2D" parent="."]
+position = Vector2(0, -36)
+emitting = false
+amount = 18
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 24.0
+initial_velocity_max = 62.0
+scale_amount_min = 1.0
+scale_amount_max = 2.5
+color_ramp = SubResource("Gradient_puff")
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="Shape" type="CollisionShape2D" parent="Area"]
+position = Vector2(0, -30)
+shape = SubResource("RectangleShape2D_area")

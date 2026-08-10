@@ -1,0 +1,136 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scenes/levels/room.gd" id="1_room"]
+[ext_resource type="Script" path="res://scripts/map/room_terrain.gd" id="2_terrain"]
+[ext_resource type="TileSet" path="res://resources/tiles/tileset_act1.tres" id="3_tiles"]
+[ext_resource type="Script" path="res://scripts/map/spawn_slot.gd" id="4_slot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_zone"]
+size = Vector2(928, 336)
+
+[node name="RoomMarketSquare" type="Node2D"]
+script = ExtResource("1_room")
+kind = "combat"
+pattern = "street"
+prefers_two_waves = true
+rage_threshold = 90.0
+rage_step_interval = 10.0
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="Tiles" type="TileMapLayer" parent="Terrain"]
+tile_set = ExtResource("3_tiles")
+script = ExtResource("2_terrain")
+layout = "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+............................................................
+............................................................
+............................................................
+............................................................
+............................................................
+............................................................
+............................................................
+............................................................
+............................................................
+............................................................
+............................................................
+............................................................
+............................................................
+............................................................
+............................................................
+..........................========..........................
+..........................|......|..........................
+..........=====...........|......|...........=====..........
+..........|...|.......SSSSSSSSSSSSSSSS.......|...|..........
+..........|...|.......SSSSSSSSSSSSSSSS.......|...|..........
+GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG"
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Slots" type="Node2D" parent="."]
+
+[node name="Ground1" type="Marker2D" parent="Slots"]
+position = Vector2(120, 336)
+script = ExtResource("4_slot")
+kind = 0
+
+[node name="Ground2" type="Marker2D" parent="Slots"]
+position = Vector2(168, 336)
+script = ExtResource("4_slot")
+kind = 0
+
+[node name="Ground3" type="Marker2D" parent="Slots"]
+position = Vector2(280, 336)
+script = ExtResource("4_slot")
+kind = 0
+
+[node name="Ground4" type="Marker2D" parent="Slots"]
+position = Vector2(648, 336)
+script = ExtResource("4_slot")
+kind = 0
+
+[node name="Ground5" type="Marker2D" parent="Slots"]
+position = Vector2(792, 336)
+script = ExtResource("4_slot")
+kind = 0
+
+[node name="Ground6" type="Marker2D" parent="Slots"]
+position = Vector2(856, 336)
+script = ExtResource("4_slot")
+kind = 0
+
+[node name="Ground7" type="Marker2D" parent="Slots"]
+position = Vector2(376, 304)
+script = ExtResource("4_slot")
+kind = 0
+
+[node name="Ground8" type="Marker2D" parent="Slots"]
+position = Vector2(520, 304)
+script = ExtResource("4_slot")
+kind = 0
+
+[node name="Ground9" type="Marker2D" parent="Slots"]
+position = Vector2(600, 304)
+script = ExtResource("4_slot")
+kind = 0
+
+[node name="High1" type="Marker2D" parent="Slots"]
+position = Vector2(440, 256)
+script = ExtResource("4_slot")
+kind = 1
+
+[node name="High2" type="Marker2D" parent="Slots"]
+position = Vector2(520, 256)
+script = ExtResource("4_slot")
+kind = 1
+
+[node name="High3" type="Marker2D" parent="Slots"]
+position = Vector2(200, 288)
+script = ExtResource("4_slot")
+kind = 1
+
+[node name="High4" type="Marker2D" parent="Slots"]
+position = Vector2(760, 288)
+script = ExtResource("4_slot")
+kind = 1
+
+[node name="Cover1" type="Marker2D" parent="Slots"]
+position = Vector2(232, 336)
+script = ExtResource("4_slot")
+kind = 4
+
+[node name="Cover2" type="Marker2D" parent="Slots"]
+position = Vector2(696, 336)
+script = ExtResource("4_slot")
+kind = 4
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(64, 336)
+
+[node name="Zone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="Zone"]
+position = Vector2(480, 176)
+shape = SubResource("RectangleShape2D_zone")

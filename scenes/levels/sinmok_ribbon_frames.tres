@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/bg/act1/shrine/bg_sinmok_ribbon.png" id="1_ribbon"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sway0"]
+atlas = ExtResource("1_ribbon")
+region = Rect2(0, 0, 160, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sway1"]
+atlas = ExtResource("1_ribbon")
+region = Rect2(160, 0, 160, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sway2"]
+atlas = ExtResource("1_ribbon")
+region = Rect2(320, 0, 160, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sway3"]
+atlas = ExtResource("1_ribbon")
+region = Rect2(480, 0, 160, 224)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sway0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sway1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sway2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sway3")
+}],
+"loop": true,
+"name": &"sway",
+"speed": 3.0
+}]

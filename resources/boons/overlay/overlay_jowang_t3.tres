@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="PantheonOverlay" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/pantheon_overlay.gd" id="1_overlay"]
+[ext_resource type="Script" path="res://scripts/data/boon_effect.gd" id="2_eff"]
+
+[sub_resource type="Resource" id="added_0"]
+script = ExtResource("2_eff")
+hook = 1
+target_key = &"burn"
+base_value = 1.0
+is_multiplier = false
+rarity_scales = false
+chance = 1.0
+duration_sec = 3.0
+cooldown_sec = 0.4
+stack_cap = 5
+condition_key = &""
+condition_value = 0.0
+
+[resource]
+script = ExtResource("1_overlay")
+id = &"overlay_jowang_t3"
+display_name = "불의 부가"
+pantheon = 1
+usage = 1
+body_scales = Array[BoonEffect]([])
+added_effects = Array[BoonEffect]([SubResource("added_0")])
+max_stack = 1
+stack_scale = 0.5
+description = "3티어 조합에서 서브가 조왕일 때 산신 본체(산군 강림)에 얹히는 부가. 근접 명중에 화상 1스택이 추가로 붙는다."
+designer_note = "9.4 PantheonOverlay, Usage.TIER3_ADDON. 액티브 모듈러 구조(ACTIVE_MODIFIER 용도)는 적용 대기이며 이 리소스는 M2에서 3티어 부가로만 쓰인다."

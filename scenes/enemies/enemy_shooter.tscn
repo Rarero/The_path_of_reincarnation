@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_shooter.gd" id="1_shooter"]
+[ext_resource type="Script" path="res://scripts/components/health.gd" id="2_health"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="3_hurtbox"]
+[ext_resource type="Resource" path="res://resources/enemies/lantern_shooter.tres" id="5_stats"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/lantern_bolt.tscn" id="6_projectile"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/lantern_impact.tscn" id="8_impact"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/dokkaebi_fire.png" id="7_wisp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(16, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(18, 24)
+
+[node name="EnemyShooter" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 257
+script = ExtResource("1_shooter")
+stats = ExtResource("5_stats")
+floating = true
+bullet_scene = ExtResource("6_projectile")
+impact_scene = ExtResource("8_impact")
+
+[node name="BodyVisual" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("7_wisp")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_health")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_hurtbox")
+
+[node name="Shape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_hurt")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(11, -14)

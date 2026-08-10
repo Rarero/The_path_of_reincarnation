@@ -1,0 +1,127 @@
+[gd_resource type="SpriteFrames" load_steps=19 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/npc/clerk_work_s.png" id="1_clerk_work_s"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc/clerk_stamp_s.png" id="2_clerk_stamp_s"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc/clerk_spaceout_s.png" id="3_clerk_spaceout_s"]
+[ext_resource type="Texture2D" path="res://assets/sprites/npc/clerk_startled_s.png" id="4_clerk_startled_s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_work0"]
+atlas = ExtResource("1_clerk_work_s")
+region = Rect2(0, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_work1"]
+atlas = ExtResource("1_clerk_work_s")
+region = Rect2(32, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_work2"]
+atlas = ExtResource("1_clerk_work_s")
+region = Rect2(64, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_work3"]
+atlas = ExtResource("1_clerk_work_s")
+region = Rect2(96, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_work_scroll0"]
+atlas = ExtResource("2_clerk_stamp_s")
+region = Rect2(0, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_work_scroll1"]
+atlas = ExtResource("2_clerk_stamp_s")
+region = Rect2(32, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_work_scroll2"]
+atlas = ExtResource("2_clerk_stamp_s")
+region = Rect2(64, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_work_scroll3"]
+atlas = ExtResource("2_clerk_stamp_s")
+region = Rect2(96, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spaceout0"]
+atlas = ExtResource("3_clerk_spaceout_s")
+region = Rect2(0, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spaceout1"]
+atlas = ExtResource("3_clerk_spaceout_s")
+region = Rect2(32, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spaceout2"]
+atlas = ExtResource("3_clerk_spaceout_s")
+region = Rect2(64, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_spaceout3"]
+atlas = ExtResource("3_clerk_spaceout_s")
+region = Rect2(96, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_startled0"]
+atlas = ExtResource("4_clerk_startled_s")
+region = Rect2(0, 0, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_startled1"]
+atlas = ExtResource("4_clerk_startled_s")
+region = Rect2(32, 0, 32, 46)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_work0")
+},{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_work1")
+},{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_work2")
+},{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_work3")
+}],
+"loop": true,
+"name": &"work",
+"speed": 3.0
+},{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_work_scroll0")
+},{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_work_scroll1")
+},{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_work_scroll2")
+},{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_work_scroll3")
+}],
+"loop": true,
+"name": &"work_scroll",
+"speed": 2.4
+},{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spaceout0")
+},{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spaceout1")
+},{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spaceout2")
+},{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_spaceout3")
+}],
+"loop": true,
+"name": &"spaceout",
+"speed": 2.0
+},{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_startled0")
+},{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_startled1")
+}],
+"loop": false,
+"name": &"startled",
+"speed": 4.0
+}]

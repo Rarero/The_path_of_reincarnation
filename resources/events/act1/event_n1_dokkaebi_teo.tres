@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EventOutcome" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/event_outcome.gd" id="1_def"]
+
+[resource]
+script = ExtResource("1_def")
+id = &"act1_dokkaebi_teo"
+display_name = "도깨비 터"
+polarity = 1
+score = -30
+trigger = 1
+room_flavor = 0
+theme_tags = Array[StringName]([])
+prerequisites = Array[StringName]([])
+run_once = false
+big_value = true
+m2_priority = false
+act = 1
+implemented = false
+params = { "greed_threshold": 0 }
+designer_note = "N1. 절제하면 큰 이득, 욕심내면 재물 소멸과 데스매치 조기 발동. 큰 값(30). 노함 임계값은 M2 확정, 총 부담이 -30 안에 담기는지 검증 필요. EVENTS 5장 N1"

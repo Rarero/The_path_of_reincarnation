@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AttackPattern" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/attack_pattern.gd" id="1_pattern"]
+
+[resource]
+script = ExtResource("1_pattern")
+display_name = "씨름 그랩"
+windup_frames = 32
+active_frames = 8
+recovery_frames = 48
+cooldown_frames = 132
+hit_count = 1
+hit_interval_frames = 0
+damage = 20
+range_px = 34.0
+hitbox_size = Vector2(30, 34)
+hitbox_offset = Vector2(20, -17)
+super_armor = true

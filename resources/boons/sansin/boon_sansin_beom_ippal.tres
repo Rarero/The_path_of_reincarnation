@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="BoonDef" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/boon_def.gd" id="1_def"]
+[ext_resource type="Script" path="res://scripts/data/boon_effect.gd" id="2_eff"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/boons/boon_sansin_beom_ippal.png" id="9_icon"]
+
+[sub_resource type="Resource" id="stat_0"]
+script = ExtResource("2_eff")
+hook = 0
+target_key = &"max_health"
+base_value = 15.0
+is_multiplier = false
+rarity_scales = true
+chance = 1.0
+duration_sec = 0.0
+cooldown_sec = 0.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[sub_resource type="Resource" id="special_0"]
+script = ExtResource("2_eff")
+hook = 14
+target_key = &"beom_ippal_rampage"
+base_value = 1.0
+is_multiplier = true
+rarity_scales = false
+chance = 1.0
+duration_sec = 10.0
+cooldown_sec = 20.0
+stack_cap = 0
+condition_key = &""
+condition_value = 0.0
+
+[resource]
+script = ExtResource("1_def")
+icon = ExtResource("9_icon")
+id = &"boon_sansin_beom_ippal"
+display_name = "범의 이빨"
+pantheon = 0
+layer = 0
+sub_pantheon = -1
+weapon_tag = 0
+weapon_tag_inherits = false
+kind = 0
+tier = 1
+act_pool = Array[int]([1, 2, 3])
+implemented = true
+m2_priority = true
+description = "쓰면 스태미나가 전부 사라지고 10초 동안 회복되지 않는다. 그 10초 동안 근접 공격 피해가 2배가 된다. 최대 체력이 소폭 오른다."
+designer_note = "산신 1티어 액티브 (docs/systems/BOONS.md 8.2). 대가가 선불이다. 스태미나가 사라진 10초 동안 대시를 못 쓴다. 스태미나 소모와 근접 피해 배율 실제 적용은 Godot 후속."
+stat_effects = Array[BoonEffect]([SubResource("stat_0")])
+special_effects = Array[BoonEffect]([SubResource("special_0")])
+special_mark = Array[BoonEffect]([])
+fusion_tags = Array[StringName]([&"beotim", &"mom"])
+fusion_accepts = Array[StringName]([&"beonjim", &"georeum"])
+fusion_deny_ids = Array[StringName]([])
+activation = 1
+active_cooldown_sec = 20.0
+cooldown_growth_sec = 0.0
+grants_new_attack = false

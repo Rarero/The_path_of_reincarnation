@@ -1,0 +1,22 @@
+{
+  "ui_assets": [
+    {
+      "id": "f8c15204-30a8-4d9e-8957-74260da78d9a",
+      "name": null,
+      "prompt": "dark lacquered wood window frame with korean traditional pattern border, brass corner fittings, dark inner panel area, muted night palette with warm orange accents, clean pixel art, black outline, no text",
+      "kind": "template",
+      "file": "dark_lacquered_wood_window_frame_with_korean_tradi/dark_lacquered_wood_window_frame_with_korean_tradi.png",
+      "size": {
+        "width": 256,
+        "height": 256
+      },
+      "group_id": "f8c15204-30a8-4d9e-8957-74260da78d9a",
+      "nine_slice": {
+        "top": 64.0,
+        "left": 64.0,
+        "right": 64.0,
+        "bottom": 64.0
+      }
+    }
+  ]
+}

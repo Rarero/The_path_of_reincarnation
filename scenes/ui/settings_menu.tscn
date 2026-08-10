@@ -1,0 +1,145 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/settings_menu.gd" id="1_settings"]
+
+[node name="SettingsMenu" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_settings")
+
+[node name="Dim" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="Box" type="Control" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -90.0
+offset_right = 150.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="Box"]
+offset_right = 300.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 20
+text = "설정"
+horizontal_alignment = 1
+
+[node name="Rows" type="VBoxContainer" parent="Box"]
+offset_left = 22.0
+offset_top = 38.0
+offset_right = 278.0
+offset_bottom = 122.0
+theme_override_constants/separation = 6
+
+[node name="Master" type="HBoxContainer" parent="Box/Rows"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="Box/Rows/Master"]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "마스터"
+vertical_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="Box/Rows/Master"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+value = 100.0
+
+[node name="MasterValue" type="Label" parent="Box/Rows/Master"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "100%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Music" type="HBoxContainer" parent="Box/Rows"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="Box/Rows/Music"]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "음악"
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Box/Rows/Music"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+value = 80.0
+
+[node name="MusicValue" type="Label" parent="Box/Rows/Music"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "80%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Effects" type="HBoxContainer" parent="Box/Rows"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="Box/Rows/Effects"]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "효과"
+vertical_alignment = 1
+
+[node name="EffectsSlider" type="HSlider" parent="Box/Rows/Effects"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+value = 100.0
+
+[node name="EffectsValue" type="Label" parent="Box/Rows/Effects"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(38, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "100%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HintLabel" type="Label" parent="Box"]
+offset_left = 22.0
+offset_top = 126.0
+offset_right = 278.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 10
+text = "전체화면 토글, 조작 안내 - 미구현"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="Box"]
+unique_name_in_owner = true
+offset_left = 110.0
+offset_top = 148.0
+offset_right = 190.0
+offset_bottom = 172.0
+theme_override_font_sizes/font_size = 14
+text = "뒤로"

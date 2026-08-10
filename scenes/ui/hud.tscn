@@ -1,0 +1,127 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/bar_under.png" id="2_under"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/bar_fill_red.png" id="3_red"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/bar_fill_teal.png" id="4_teal"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Root" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="Root"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 81.0
+offset_bottom = 17.0
+max_value = 100.0
+value = 100.0
+texture_under = ExtResource("2_under")
+texture_progress = ExtResource("3_red")
+
+[node name="StaminaBar" type="TextureProgressBar" parent="Root"]
+offset_left = 5.0
+offset_top = 18.0
+offset_right = 81.0
+offset_bottom = 30.0
+max_value = 100.0
+value = 100.0
+texture_under = ExtResource("2_under")
+texture_progress = ExtResource("4_teal")
+
+[node name="AmmoLabel" type="Label" parent="Root"]
+offset_left = 5.0
+offset_top = 32.0
+offset_right = 135.0
+offset_bottom = 45.0
+text = "8 / 8"
+
+[node name="RunLabel" type="Label" parent="Root"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 18.0
+grow_horizontal = 0
+horizontal_alignment = 2
+
+[node name="RelicLabel" type="Label" parent="Root"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = 19.0
+offset_right = -5.0
+offset_bottom = 32.0
+grow_horizontal = 0
+horizontal_alignment = 2
+clip_text = true
+
+[node name="BoonLabel" type="Label" parent="Root"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_top = 33.0
+offset_right = -5.0
+offset_bottom = 46.0
+grow_horizontal = 0
+horizontal_alignment = 2
+clip_text = true
+
+[node name="RageLabel" type="Label" parent="Root"]
+anchor_right = 1.0
+offset_left = 0.0
+offset_top = 52.0
+offset_right = 0.0
+offset_bottom = 68.0
+horizontal_alignment = 1
+
+[node name="RoomLabel" type="Label" parent="Root"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -18.0
+offset_right = 285.0
+offset_bottom = -5.0
+grow_vertical = 0
+clip_text = true
+
+[node name="BossPanel" type="Control" parent="Root"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="BossNameLabel" type="Label" parent="Root/BossPanel"]
+anchor_right = 1.0
+offset_left = 4.0
+offset_right = -4.0
+offset_bottom = 13.0
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+clip_text = true
+
+[node name="BossBar" type="TextureProgressBar" parent="Root/BossPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 13.0
+offset_right = -4.0
+offset_bottom = -2.0
+max_value = 100.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("2_under")
+texture_progress = ExtResource("3_red")
