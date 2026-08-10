@@ -736,10 +736,11 @@ func _on_died() -> void:
 	GameEvents.player_died.emit()
 
 
-## 피격 피드백: 적색 점멸 + 무적 깜빡임 + 화면 흔들림 + 히트스톱 + 밀려남.
+## 피격 피드백: 피격음 + 적색 점멸 + 무적 깜빡임 + 화면 흔들림 + 히트스톱 + 밀려남.
 func _on_player_hit(_amount: int, source_position: Vector2) -> void:
 	if _dead:
 		return
+	AudioDirector.play_sfx(AudioDirector.Sfx.PLAYER_HIT)
 	_hurt_invuln_left = 0.6
 	health.set_invulnerable(true)
 	_body_visual.self_modulate = Color(1.0, 0.45, 0.45)

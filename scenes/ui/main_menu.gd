@@ -38,6 +38,8 @@ func _ready() -> void:
 	else:
 		continue_button.hide()
 		start_button.grab_focus()
+	# 진입 시 자동 포커스에는 소리가 나지 않게 연결을 한 프레임 미룬다
+	_connect_menu_sfx.call_deferred()
 
 
 ## 중단 저장을 불러와 런을 재개한다. 런 상태를 먼저 복원한 뒤(플레이어 최대 체력 보정 반영) 씬을 연다.
@@ -87,3 +89,21 @@ func _on_settings_closed() -> void:
 
 func _on_quit_pressed() -> void:
 	SceneRouter.quit_game()
+
+
+## 메뉴 이동(포커스)과 선택(누름)에 공용 선택음을 붙인다 (SFX_PROMPTS.md 3번)
+func _connect_menu_sfx() -> void:
+	var buttons: Array[Button] = [
+		continue_button,
+		start_button,
+		restart_button,
+		settings_button,
+		quit_button,
+	]
+	for button: Button in buttons:
+		button.focus_entered.connect(_play_select_sfx)
+		button.pressed.connect(_play_select_sfx)
+
+
+func _play_select_sfx() -> void:
+	AudioDirector.play_sfx(AudioDirector.Sfx.UI_SELECT)

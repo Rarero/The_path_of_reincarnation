@@ -11,8 +11,8 @@ extends Node
 ## 버스는 Master 아래 Music, Ambience, Sfx, Ui다 (resources/audio/default_bus_layout.tres).
 ## 설정 화면의 음량 3축은 마스터=Master, 음악=Music, 효과=Ambience+Sfx+Ui다.
 ##
-## 효과음과 앰비언스는 아직 소스가 없다. 버스와 음량 축만 미리 잡아 두었고 재생 계층은
-## 소스가 들어올 때 이 파일에 얹는다 (_xfer/hgp_audio_20260810/AUDIO_LIST.md).
+## 효과음은 확정 3종(플레이어 피격, 적 피격, 이동/선택)을 재생기 풀로 낸다 (play_sfx,
+## SFX_PROMPTS.md). 앰비언스는 아직 소스가 없다.
 
 ## 재생 중인 곡이 바뀌었다. track은 Track 값이고 정지는 Track.NONE이다
 signal bgm_changed(track: int)
@@ -26,6 +26,9 @@ enum Track { NONE = -1, TITLE, INTRO, HUB, STAGE, EVENT, SHRINE, BOSS }
 
 ## 음량 축. 설정 화면 슬라이더 3종과 1:1로 대응한다
 enum Channel { MASTER, MUSIC, EFFECTS }
+
+## 효과음 종류. 전투음은 assets/audio/sfx, 메뉴와 지도 조작음은 assets/audio/ui에 둔다
+enum Sfx { PLAYER_HIT, ENEMY_HIT, UI_SELECT }
 
 ## 트랙별 음원 경로
 const TRACK_PATHS: Dictionary = {
@@ -53,6 +56,25 @@ const BUS_MUSIC: StringName = &"Music"
 ## 효과 축이 한꺼번에 움직이는 버스 목록
 const EFFECT_BUSES: Array = [&"Ambience", &"Sfx", &"Ui"]
 
+## 효과음별 음원. 짧은 원샷이라 프리로드로 들고 있는다
+const SFX_STREAMS: Dictionary = {
+	Sfx.PLAYER_HIT: preload("res://assets/audio/sfx/sfx_player_hit_01.wav"),
+	Sfx.ENEMY_HIT: preload("res://assets/audio/sfx/sfx_enemy_hit_01.wav"),
+	Sfx.UI_SELECT: preload("res://assets/audio/ui/ui_select_01.wav"),
+}
+## 효과음이 나가는 버스. 전투음은 Sfx, 메뉴와 지도 조작음은 Ui다
+const SFX_BUSES: Dictionary = {
+	Sfx.PLAYER_HIT: &"Sfx",
+	Sfx.ENEMY_HIT: &"Sfx",
+	Sfx.UI_SELECT: &"Ui",
+}
+## 피치 변주 폭. 적 피격음만 살짝 흔들어 연타의 기계적 반복감을 줄인다
+const SFX_PITCH_JITTER: Dictionary = {Sfx.ENEMY_HIT: 0.08}
+## 같은 효과음의 최소 재생 간격 (초). 한 프레임 다중 히트가 소리를 겹쳐 키우는 것을 막는다
+const SFX_MIN_INTERVAL: float = 0.04
+## 효과음 재생기 수. 풀을 돌려 가며 써서 이 수만큼 겹쳐 울릴 수 있다
+const SFX_PLAYER_COUNT: int = 6
+
 const SETTINGS_PATH: String = "user://settings.json"
 const SETTINGS_VERSION: int = 1
 ## 음량 기본값 (0.0~1.0). 음악은 효과음에 묻히지 않게 조금 낮춘다
@@ -75,12 +97,18 @@ var _duck_db: float = 0.0
 var _fade: Tween = null
 var _duck: Tween = null
 var _save_timer: Timer = null
+## 효과음 재생기 풀과 순환 인덱스
+var _sfx_players: Array[AudioStreamPlayer] = []
+var _sfx_next: int = 0
+## 효과음별 마지막 재생 시각 (msec). 최소 간격 판정에 쓴다
+var _sfx_last_ms: Dictionary = {}
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_volumes = DEFAULT_VOLUMES.duplicate()
 	_build_players()
+	_build_sfx_players()
 	_build_save_timer()
 	load_settings()
 
@@ -135,6 +163,27 @@ func stop_bgm(fade_time: float = CROSSFADE_TIME) -> void:
 ## 지금 걸린 트랙 (Track 값). 정지 상태는 Track.NONE이다
 func current_track() -> int:
 	return _track
+
+
+## 효과음을 낸다. 재생기 풀을 순환하며, 같은 소리는 최소 간격 안에서 한 번만 낸다.
+## 오토로드가 ALWAYS라 일시정지와 지도 화면에서도 울린다
+func play_sfx(id: int) -> void:
+	var stream: AudioStream = SFX_STREAMS.get(id) as AudioStream
+	if stream == null:
+		push_warning("알 수 없는 효과음: %d" % id)
+		return
+	var now_ms: int = Time.get_ticks_msec()
+	var last_ms: int = int(_sfx_last_ms.get(id, -1000))
+	if now_ms - last_ms < int(SFX_MIN_INTERVAL * 1000.0):
+		return
+	_sfx_last_ms[id] = now_ms
+	var player: AudioStreamPlayer = _sfx_players[_sfx_next]
+	_sfx_next = (_sfx_next + 1) % _sfx_players.size()
+	var jitter: float = float(SFX_PITCH_JITTER.get(id, 0.0))
+	player.stream = stream
+	player.bus = StringName(SFX_BUSES.get(id, &"Sfx"))
+	player.pitch_scale = 1.0 + randf_range(-jitter, jitter)
+	player.play()
 
 
 ## 지도를 펼치는 동안 음악을 눌러 둔다. 곡을 바꾸지 않고 Music 버스만 깎는다
@@ -215,6 +264,15 @@ func _build_players() -> void:
 		player.volume_db = SILENT_DB
 		add_child(player)
 		_players.append(player)
+
+
+func _build_sfx_players() -> void:
+	for index: int in range(SFX_PLAYER_COUNT):
+		var player: AudioStreamPlayer = AudioStreamPlayer.new()
+		player.name = "SfxPlayer%d" % index
+		player.bus = &"Sfx"
+		add_child(player)
+		_sfx_players.append(player)
 
 
 func _build_save_timer() -> void:

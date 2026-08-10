@@ -502,6 +502,7 @@ func _deactivate_hitboxes(node: Node) -> void:
 
 
 func _on_hit_received(amount: int, source_position: Vector2) -> void:
+	AudioDirector.play_sfx(AudioDirector.Sfx.ENEMY_HIT)
 	_spawn_damage_number(amount)
 	# 슈퍼아머 구간에서는 피해와 피격 표시만 받고 경직과 넉백, 행동 취소는 걸리지 않는다
 	if can_be_staggered():

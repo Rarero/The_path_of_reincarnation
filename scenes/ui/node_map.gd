@@ -211,6 +211,7 @@ func _is_left_click(event: InputEventMouseButton) -> bool:
 func _move_selection(step: int) -> void:
 	var count: int = _selectable.size()
 	_sel_index = (_sel_index + step + count) % count
+	AudioDirector.play_sfx(AudioDirector.Sfx.UI_SELECT)
 	get_viewport().set_input_as_handled()
 	queue_redraw()
 
@@ -236,6 +237,7 @@ func _confirm() -> void:
 	if not _is_open or _selectable.is_empty():
 		return
 	var chosen: int = _selectable[_sel_index]
+	AudioDirector.play_sfx(AudioDirector.Sfx.UI_SELECT)
 	_is_open = false
 	get_viewport().set_input_as_handled()
 	var tween: Tween = create_tween()

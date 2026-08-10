@@ -28,6 +28,7 @@ func _ready() -> void:
 	# 웹 빌드에는 프로세스 종료 개념이 없다. 종료 버튼을 숨긴다
 	if OS.has_feature("web"):
 		_quit_button.hide()
+	_connect_menu_sfx()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -86,3 +87,20 @@ func _on_title_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
 	SceneRouter.quit_game()
+
+
+## 메뉴 이동(포커스)과 선택(누름)에 공용 선택음을 붙인다 (SFX_PROMPTS.md 3번)
+func _connect_menu_sfx() -> void:
+	var buttons: Array[Button] = [
+		_resume_button,
+		_settings_button,
+		_title_button,
+		_quit_button,
+	]
+	for button: Button in buttons:
+		button.focus_entered.connect(_play_select_sfx)
+		button.pressed.connect(_play_select_sfx)
+
+
+func _play_select_sfx() -> void:
+	AudioDirector.play_sfx(AudioDirector.Sfx.UI_SELECT)
